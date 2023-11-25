@@ -1,0 +1,14 @@
+{
+    "users":[
+     {   
+    "name":"Bimal",
+    "age":18,
+    "address":"Butwal",
+    "married":true },
+    {   
+        "name":"Poudel",
+        "age":24,
+        "address":"Sainamaina",
+        "married":false }
+    ]
+}
