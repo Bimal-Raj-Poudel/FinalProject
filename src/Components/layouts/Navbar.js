@@ -19,7 +19,6 @@ const Navbar = () => {
           <li className="nav-item">
            <Link to="/" > 
            <p className="nav-link active" >Home</p>
-           <P></P>
            </Link>
           </li>
 
