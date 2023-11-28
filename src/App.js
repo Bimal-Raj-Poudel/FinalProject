@@ -14,11 +14,23 @@ import Navbar from "./Components/layouts/Navbar"
 import PropertyPage from "./Components/Pages/PropertyPage"
 import PropertySingle from './Components/Pages/PropertySingle';
 import AboutUs from './Components/Pages/AboutUs';
+import Admin from './Components/Admin/Admin';
 
 function App() {
 
+  const isAdmin = true;
+
+  if(isAdmin){
+    return( <>
+          <Routes>
+          <Route path="/admin" element={<Admin/>}></Route> 
+          </Routes>
+      </>)
+  }
+
+  else {
   return (
-    <>
+    <>    
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}> </Route>
@@ -32,12 +44,12 @@ function App() {
         <Route path="/SignIn" element={<SignIn/>}></Route>        
         <Route path="/property" element={<PropertyPage/>}></Route>        
         <Route path="/propertySingle" element={<PropertySingle/>}></Route>        
-        <Route path="/aboutUs" element={<AboutUs/>}></Route>        
-      
+        <Route path="/aboutUs" element={<AboutUs/>}></Route>  
       </Routes>
       <Footer />
     </>
   );
+  }
 }
 
 export default App;
