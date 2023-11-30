@@ -15,6 +15,9 @@ import PropertyPage from "./Components/Pages/PropertyPage"
 import PropertySingle from './Components/Pages/PropertySingle';
 import AboutUs from './Components/Pages/AboutUs';
 import Admin from './Components/Admin/Admin';
+import AdminHome from './Components/Admin/AdminHome';
+import AdminUser from './Components/Admin/AdminUser';
+import AdminCategory from './Components/Admin/AdminCategory';
 
 function App() {
 
@@ -22,8 +25,12 @@ function App() {
 
   if(isAdmin){
     return( <>
-          <Routes>
-          <Route path="/admin" element={<Admin/>}></Route> 
+          <Admin />
+
+          <Routes> 
+          <Route path="/admin/home" element={<AdminHome/>}></Route> 
+          <Route path="/admin/user" element={<AdminUser/>}></Route> 
+          <Route path="/admin/category" element={<AdminCategory/>}></Route> 
           </Routes>
       </>)
   }
