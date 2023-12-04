@@ -51,6 +51,422 @@
         "categoryName": "category_name",
         "categoryDescription": null
       }
+    },
+    {
+      "id": "10b8cb30-092f-4388-a70d-7eda8653e9861",
+      "title": "updation check",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695320100000,
+      "updatedAt": 1701108900000,
+      "price": 2003,
+      "rented": true,
+      "description": "Nothing",
+      "district": "Rupandehi",
+      "city": "butwal",
+      "person": {
+        "person_id": "488b2938-bc14-48b7-8f14-63e38cc41c28",
+        "name": "user_name",
+        "email": "aashis@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea01",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "10b8cb30-092f-4388-a70d-7eda8653e9863",
+      "title": "updation check",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695320100000,
+      "updatedAt": 1701108900000,
+      "price": 2003,
+      "rented": true,
+      "description": "Nothing",
+      "district": "Rupandehi",
+      "city": "butwal",
+      "person": {
+        "person_id": "488b2938-bc14-48b7-8f14-63e38cc41c28",
+        "name": "user_name",
+        "email": "aashis@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea03",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "10b8cb30-092f-4388-a70d-7eda8653e9864",
+      "title": "updation check",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695320100000,
+      "updatedAt": 1701108900000,
+      "price": 2003,
+      "rented": true,
+      "description": "Nothing",
+      "district": "Rupandehi",
+      "city": "butwal",
+      "person": {
+        "person_id": "488b2938-bc14-48b7-8f14-63e38cc41c28",
+        "name": "user_name",
+        "email": "aashis@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea04",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea05",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea06",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea07",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea08",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea09",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea010",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea1",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea2",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea3",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
+    },
+    {
+      "id": "232e2797-d620-4331-a8a4-685a120ebea4",
+      "title": "Home located at the heart of Pokhara",
+      "latitude": 27.6844,
+      "longitude": 85.3059,
+      "createdAt": 1695579300000,
+      "updatedAt": 1695579300000,
+      "price": 0,
+      "rented": false,
+      "description": "The apartment is located on the 1st floor of a living house in a quiet street.",
+      "district": "Pokhara",
+      "city": "POKHAR",
+      "person": {
+        "person_id": "b38092bc-587f-4525-9feb-3a6ef628f0d9",
+        "name": "user_name",
+        "email": "bishal@gmail.com",
+        "password": null,
+        "phone": "phone_num",
+        "address": "address"
+      },
+      "category": {
+        "category_id": 1,
+        "categoryName": "category_name",
+        "categoryDescription": null
+      }
     }
   ]
 }
