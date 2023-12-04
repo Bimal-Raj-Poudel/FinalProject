@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import EditCategory from './EditCategory';
 
+
 export default function CategoryItem({item, updatedCategoryInfo,handleDelete}) {
 
     const [model, setModel]= useState(false);
@@ -12,12 +13,13 @@ export default function CategoryItem({item, updatedCategoryInfo,handleDelete}) {
 
   return (
     <>
+    
     {!model?
       <div className="accordion accordion-flush" id="accordionFlushExample">
   <div className="accordion-item">
     <h2 className="accordion-header">
       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"  data-bs-target={`#flush-collapse${item.id}`} aria-expanded="false" aria-controls={`flush-collapse${item.id}`}>
-       <strong> Title : {item.categoryName} </strong>
+       <strong> {item.categoryName} </strong>
       </button>
     </h2>
     <div id={`flush-collapse${item.id}`} className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">

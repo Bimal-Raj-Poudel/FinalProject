@@ -1,0 +1,7 @@
+.addCategory{
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid gainsboro;
+    padding: 4px;
+    width: auto;
+}

@@ -14,25 +14,33 @@ import Navbar from "./Components/layouts/Navbar"
 import PropertyPage from "./Components/Pages/PropertyPage"
 import PropertySingle from './Components/Pages/PropertySingle';
 import AboutUs from './Components/Pages/AboutUs';
-import Admin from './Components/Admin/Admin';
+import SideBar from './Components/Admin/SideBar';
 import AdminHome from './Components/Admin/AdminHome';
 import AdminUser from './Components/Admin/AdminUser';
 import AdminCategory from './Components/Admin/AdminCategory';
+import DashBoard from './Components/Admin/DashBoard';
+import './App.css'
 
 function App() {
 
   const isAdmin = true;
 
   if(isAdmin){
-    return( <>
-          <Admin />
+    return( 
+    <div className='Flex-Container'>
 
+        <div className='sidebar'>  <SideBar /> </div>
+
+        <div className='content'> 
           <Routes> 
+          <Route path="/" element={<DashBoard/>}></Route> 
           <Route path="/admin/home" element={<AdminHome/>}></Route> 
           <Route path="/admin/user" element={<AdminUser/>}></Route> 
           <Route path="/admin/category" element={<AdminCategory/>}></Route> 
           </Routes>
-      </>)
+          </div>
+    
+      </div>)
   }
 
   else {

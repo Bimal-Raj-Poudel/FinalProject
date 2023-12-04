@@ -1,0 +1,57 @@
+
+/* Apply styles to the flex container */
+.Flex-Container {
+  margin: auto;
+  padding: 0;
+  display: flex;
+}
+
+/* Apply styles to the sidebar */
+.sidebar {
+  border-radius: 4px;
+  padding: 5px;
+  background-color: black;
+  flex: 0 0 auto; /* shorthand for flex-grow, flex-shrink, and flex-basis */
+  max-width: 250px; /* set the maximum width of the sidebar */
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+/* Apply styles to the content area */
+.content {
+  margin: 5px;
+  flex: 1; /* take up remaining space in the flex container */
+  height: 100vh;
+  overflow-y: auto; /* enable vertical scrolling if content overflows */
+  padding-left: 200px; /* adjust based on the width of your sidebar */
+}
+
+/* .Flex-Container{
+  margin: auto;
+  padding: 0%;
+  display: flex;
+}
+
+.sidebar{
+  border-radius: 4px;
+  padding: 5px;
+  background-color: black;
+  max-width: fit-content;
+  flex-grow: 2;
+  flex-shrink: 0;
+  height: 100vh;
+  position: fixed;
+}
+
+.content{
+margin: 5px;
+flex-grow: 8;
+height: 100vh;
+} */
+
+
+
+
+

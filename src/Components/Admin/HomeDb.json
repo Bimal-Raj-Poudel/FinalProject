@@ -1,7 +1,7 @@
 {
   "homes": [
     {
-      "home_id": "10b8cb30-092f-4388-a70d-7eda8653e986",
+      "id": "10b8cb30-092f-4388-a70d-7eda8653e986",
       "title": "updation check",
       "latitude": 27.6844,
       "longitude": 85.3059,
@@ -27,7 +27,7 @@
       }
     },
     {
-      "home_id": "232e2797-d620-4331-a8a4-685a120ebea0",
+      "id": "232e2797-d620-4331-a8a4-685a120ebea0",
       "title": "Home located at the heart of Pokhara",
       "latitude": 27.6844,
       "longitude": 85.3059,
