@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function PopUpForm({addCategory}) {
+export default function PopUpForm({addCategory, formVisibility}) {
     const [title, addTitle] = useState('');
     const [description, addDesription] = useState('')
 
@@ -14,23 +14,28 @@ export default function PopUpForm({addCategory}) {
         addTitle('')
         addDesription('')
     }
+
+    const setFormVisibiliy = () =>{
+      formVisibility(makeInvisible => !makeInvisible);
+    }
    
 
   return (
     <>
-      <div className="popup-form">
-          <form onSubmit={handelAddCategory}>
-  <div class="form-group">
+      <div className="popup-form m-2">
+      <form onSubmit={handelAddCategory}>
+  <div class="form-group m-2">
     <label for="Title">Enter Title</label>
-    <input type="text" class="form-control" id="Title" value={title} aria-describedby="emailHelp" placeholder="Enter Title" onChange={e=> addTitle(e.target.value)} />
+    <input type="text" class="form-control" id="Title" value={title} aria-describedby="emailHelp" placeholder="Title" onChange={e=> addTitle(e.target.value)} required/>
   </div>
-  <br/>
-  <div class="form-group">
+  
+  <div class="form-group m-2">
     <label for="Description">Enter Description</label>
-    <input type="text" class="form-control" id="Description"  value={description} aria-describedby="emailHelp" placeholder="Enter Title" onChange={e=> addDesription(e.target.value)}/>
+    <input type="text" class="form-control" id="Description"  value={description} aria-describedby="emailHelp" placeholder="Description" onChange={e=> addDesription(e.target.value)} required/>
   </div>
-  <br/>
-  <button type="submit" class="btn btn-primary">Submit</button>
+
+  <button type="submit" className="btn btn-primary m-2">Submit</button>
+  <button type="button" className="btn btn-warning m-2" onClick={setFormVisibiliy}>Cancel</button>
 </form>
         </div>  
     </>

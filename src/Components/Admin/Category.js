@@ -68,7 +68,7 @@ export default function Category() {
   return (
     <>
        <button type="button" class="btn btn-dark" onClick={toggleFormVisibility}><i class="fas fa-plus"></i>Add Category</button>
-       {isFormVisible && (<PopUpForm addCategory={handelAddCategory}/>)}
+       {isFormVisible && (<PopUpForm addCategory={handelAddCategory} formVisibility={setIsFormVisible}/>)}
        <ul>
         {category.map(value => (
           <li key={value.id}><CategoryItem item={value} updatedCategoryInfo={handleUpdatedCategoryInfo} handleDelete={deleteCategory}/></li>

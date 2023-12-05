@@ -16,14 +16,9 @@
       "categoryDescription": "It is a single room with shutter."
     },
     {
-      "id": 50,
       "categoryName": "Aashis",
-      "categoryDescription": "Pandey"
-    },
-    {
-      "id": 35,
-      "categoryName": "hey",
-      "categoryDescription": "hoo"
+      "categoryDescription": "Pandey",
+      "id": 50
     },
     {
       "id": 14,
