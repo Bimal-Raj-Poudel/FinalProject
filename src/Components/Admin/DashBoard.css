@@ -1,0 +1,27 @@
+.Dashboard-Container{
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+}
+
+p{
+    font-family:'Times New Roman', Times, serif;
+    color: darkgray;
+}
+
+.flexBox{ 
+    height: 150px;
+    width: 150px;
+    border: 2px solid skyblue;
+    border-radius: 10px;
+    font-weight: bolder;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+
+

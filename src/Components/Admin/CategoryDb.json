@@ -1,0 +1,34 @@
+{
+  "category": [
+    {
+      "id": 2,
+      "categoryName": "Shutter",
+      "categoryDescription": "It is a single room with shutter."
+    },
+    {
+      "id": 3,
+      "categoryName": "house",
+      "categoryDescription": "It is a whole house with shutter."
+    },
+    {
+      "id": 1,
+      "categoryName": "Shutter",
+      "categoryDescription": "It is a single room with shutter."
+    },
+    {
+      "id": 50,
+      "categoryName": "Aashis",
+      "categoryDescription": "Pandey"
+    },
+    {
+      "id": 35,
+      "categoryName": "hey",
+      "categoryDescription": "hoo"
+    },
+    {
+      "id": 14,
+      "categoryName": "tilottama",
+      "categoryDescription": "rupandehi"
+    }
+  ]
+}
