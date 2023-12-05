@@ -23,7 +23,7 @@ import './App.css'
 
 function App() {
 
-  const isAdmin = true;
+  const isAdmin = false;
 
   if(isAdmin){
     return( 

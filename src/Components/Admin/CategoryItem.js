@@ -15,8 +15,8 @@ export default function CategoryItem({item, updatedCategoryInfo,handleDelete}) {
     <>
     
     {!model?
-      <div className="accordion accordion-flush" id="accordionFlushExample">
-  <div className="accordion-item">
+      <div className="accordion accordion-flush m-2 border border-success " id="accordionFlushExample">
+  <div className="accordion-item ">
     <h2 className="accordion-header">
       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"  data-bs-target={`#flush-collapse${item.id}`} aria-expanded="false" aria-controls={`flush-collapse${item.id}`}>
        <strong> {item.categoryName} </strong>
@@ -28,8 +28,8 @@ export default function CategoryItem({item, updatedCategoryInfo,handleDelete}) {
             <li key={item.id}><strong><p>{item.categoryDescription}</p></strong></li>
         </ul>
       </div>
-      <button type="button" class="btn btn-danger" onClick={(e) => handleDelete(item.id)}>Delete</button>
-      <button type="button" class="btn btn-secondary" onClick={handleEditCategory}>Edit</button>
+      <button type="button" class="btn btn-danger m-2" onClick={(e) => handleDelete(item.id)}>Delete</button>
+      <button type="button" class="btn btn-secondary m-2" onClick={handleEditCategory}>Edit</button>
     </div>
   </div>
 </div>
