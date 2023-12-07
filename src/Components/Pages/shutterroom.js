@@ -1,11 +1,12 @@
 import React from 'react';
+import Properties from './Properties';
 
 const shutterroom = () => {
   return (
     <>
-      
-      hello from shutterroom 
-
+      <div className='mt-3'>
+     <Properties />
+     </div>
     </>
   );
 }

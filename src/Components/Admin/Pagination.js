@@ -16,7 +16,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <nav className="fixed-bottom d-flex justify-content-center" aria-label="...">
+    <nav className="sticky-bottom d-flex justify-content-center" aria-label="...">
       <ul className="pagination">
         <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
           <a className="page-link" href="#" onClick={() => onPageChange(currentPage - 1)}>

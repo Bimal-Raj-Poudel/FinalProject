@@ -13,7 +13,9 @@ const Services = () => {
             </div>
           </div>
         </div>
+
         <div className="row">
+          
           <div className="col-md-4">
             <div className="card-box-c foo">
               <div className="card-header-c d-flex">
@@ -21,14 +23,15 @@ const Services = () => {
                   <span className="bi bi-cart"></span>
                 </div>
                 <div className="card-title-c align-self-center">
-                  <h2 className="title-c">Lifestyle</h2>
+                  <h2 className="title-c">Property Listings</h2>
                 </div>
               </div>
               <div className="card-body-c">
-                <p className="content-c">
-                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                  convallis a pellentesque
-                  nec, egestas non nisi.
+                <p className="content-c text-dark fw-semibold">
+                List your properties hassle-free. 
+                Our platform allows property owners to showcase their rentals 
+                with detailed descriptions, high-quality images, and essential 
+                information, attracting potential tenants.
                 </p>
               </div>
               <div className="card-footer-c">
@@ -42,22 +45,21 @@ const Services = () => {
             <div className="card-box-c foo">
               <div className="card-header-c d-flex">
                 <div className="card-box-ico">
-                  <span className="bi bi-calendar4-week"></span>
+                <span className="bi bi-search"></span>
                 </div>
                 <div className="card-title-c align-self-center">
-                  <h2 className="title-c">Loans</h2>
+                  <h2 className="title-c">Advance Search</h2>
                 </div>
               </div>
               <div className="card-body-c">
-                <p className="content-c">
-                  Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit
-                  aliquet elit, eget tincidunt
-                  nibh pulvinar a.
+                <p className="content-c text-dark fw-semibold">
+                Tenants can explore a wide range of available rentals using our advanced search filters. 
+                Find the perfect home or commercial space based on your preferences and location.
                 </p>
               </div>
               <div className="card-footer-c">
                 <a href="#" className="link-c link-icon">Read more
-                  <span className="bi bi-calendar4-week"></span>
+                <span className="bi bi-chevron-right"></span>
                 </a>
               </div>
             </div>
@@ -67,16 +69,17 @@ const Services = () => {
               <div className="card-header-c d-flex">
                 <div className="card-box-ico">
                   <span className="bi bi-card-checklist"></span>
+
                 </div>
                 <div className="card-title-c align-self-center">
-                  <h2 className="title-c">Sell</h2>
+                  <h2 className="title-c">Bridiging Communication</h2>
                 </div>
               </div>
               <div className="card-body-c">
-                <p className="content-c">
-                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                  convallis a pellentesque
-                  nec, egestas non nisi.
+                <p className="content-c text-dark fw-semibold">
+                The primary role is to streamline and facilitate the rental process, ensuring 
+                smooth communication and efficient management of properties.Bridges the gap 
+                between owner and tenant.
                 </p>
               </div>
               <div className="card-footer-c">

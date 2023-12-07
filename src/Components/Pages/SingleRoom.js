@@ -1,9 +1,10 @@
 import React from 'react';
+import Properties from './Properties';
 
 export default function SingleRoom() {
   return (
-    <div>
-      Hello from single room.
+    <div className='mt-3'>
+      <Properties />
     </div>
   );
 }

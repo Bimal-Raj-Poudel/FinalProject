@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Properties = () => {
   const propertyDetails = [
@@ -75,8 +76,9 @@ const Properties = () => {
   console.log(propertyDetails)
   return (
     <>
-    <div id="main">
-    <section class="intro-single">
+    <div id="main d-flex flex-column">
+
+    {/* <section class="intro-single ">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-8">
@@ -87,10 +89,12 @@ const Properties = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section> */}
+
     <section className="property-grid grid">
       <div className="container">
         <div className="row">
+
         {propertyDetails.map((data, index)=>(
 
           <div className="col-md-4" key={index+1}>
@@ -107,11 +111,11 @@ const Properties = () => {
                   </div>
                   <div className="card-body-a">
                     <div className="price-box d-flex">
-                      <span className="price-a">rent | $ {data.rentPrice}</span>
+                      <span className="price-a">rent | RS. {data.rentPrice}</span>
                     </div>
-                    <a href="property-single.html" className="link-a">Click here to view
+                    <Link to={`/Property/${index}`}  className="link-a">Click here to view
                       <span className="bi bi-chevron-right"></span>
-                    </a>
+                    </Link>
                   </div>
                   <div className="card-footer-a">
                     <ul className="card-info d-flex justify-content-around">
@@ -140,10 +144,11 @@ const Properties = () => {
             </div>
           </div>
                ))}
-
         </div>
       </div>
+      {/* <Pagination /> */}
     </section>
+
     </div>
     </>
   );

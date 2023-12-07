@@ -1,39 +1,41 @@
+
+import React from 'react';
+
 const PropertySingle = () => {
+  const propertyDetails = [
+    {
+        propertyTItle: "204 Mount Olive Road Two",
+        rentPrice: 12000,
+        link: "",
+        roomDetails: {
+            area: 340,
+            beds: 2,
+            baths: 3,
+            garages: 1
+        }
+    }]
+
+    
    return (
      <>
-      <section class="property-single nav-arrow-b">
+     
+      <section class="property-single nav-arrow-b mt-3">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <div id="property-single-carousel" class="swiper">
-              <div class="swiper-wrapper">
-                <div class="carousel-item-b swiper-slide">
-                  <img src="assets/img/slide-1.jpg" alt=""/>
-                </div>
-                <div class="carousel-item-b swiper-slide">
-                  <img src="assets/img/slide-2.jpg" alt=""/>
-                </div>
-              </div>
-            </div>
-            <div class="property-single-carousel-pagination carousel-pagination"></div>
-          </div>
-        </div>
 
         <div class="row">
           <div class="col-sm-12">
 
             <div class="row justify-content-between">
               <div class="col-md-5 col-lg-4">
-                <div class="property-price d-flex justify-content-center foo">
-                  <div class="card-header-c d-flex">
-                    <div class="card-box-ico">
-                      <span class="bi bi-cash">$</span>
-                    </div>
-                    <div class="card-title-c align-self-center">
-                      <h5 class="title-c">15000</h5>
-                    </div>
+
+               {/* Image and Badge setup */}
+                <div class="d-flex justify-content-center ">
+                  <div className="card-header-c d-flex">
+                  <span class={`badge text-bg-${'primary'} position-absolute m-3`}>{"Available"}</span>
+                     <img src="/assets/img/slide-2.jpg" alt="Error Loading..." style={{ width: '100%', height: '400px' }}/>
                   </div>
                 </div>
+
                 <div class="property-summary">
                   <div class="row">
                     <div class="col-sm-12">
@@ -91,7 +93,7 @@ const PropertySingle = () => {
                   </div>
                 </div>
                 <div class="property-description">
-                  <p class="description color-text-a">
+                  <p class="description color-text-a fw-semibold">
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
                     neque, auctor sit amet
                     aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.
@@ -107,11 +109,11 @@ const PropertySingle = () => {
                 <div class="row section-t3">
                   <div class="col-sm-12">
                     <div class="title-box-d">
-                      <h3 class="title-d">Amenities</h3>
+                      <h3 class="title-d ">Amenities</h3>
                     </div>
                   </div>
                 </div>
-                <div class="amenities-list color-text-a">
+                <div class="amenities-list color-text-a fw-semibold">
                   <ul class="list-a no-margin">
                     <li>Balcony</li>
                     <li>Outdoor Kitchen</li>
@@ -127,46 +129,48 @@ const PropertySingle = () => {
               </div>
             </div>
           </div>
-          <div class="col-md-10 offset-md-1">
-            <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="pills-video-tab" data-bs-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">Video</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-plans-tab" data-bs-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false">Floor Plans</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="pills-map-tab" data-bs-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Ubication</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="pills-tabContent">
-              <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
-                <iframe src="https://player.vimeo.com/video/73221098" width="100%" height="460" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-              </div>
-              <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
-                <img src="assets/img/plan2.jpg" alt="" class="img-fluid"/>
-              </div>
-              <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-                <iframe className="border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834" width="100%" height="460" frameborder="0"  allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
+          {/* MAP Location of Property */}
+          <div className='mt-2'>
+            <h4>See Location</h4>
+            <iframe src={`https://maps.google.com/maps?q=${25.5},${25.3}&hl=es;&output=embed`} id="iframeId" height="500px" width="100%"></iframe>
+        </div>
+
+        {/* Comment section */}
+
+        <div className='mt-4 bg-success-subtle rounded-3'>
+        <div className='m-2 fw-bolder'>Add Comments</div>
+        
+        <div className="form-floating">
+        <textarea className="form-control border border-success rounded-4" placeholder="Leave a comment here" id="floatingTextarea2" style={{height: "100px"}} />
+        <label for="floatingTextarea2">Add Comment.</label>
+        <button className='fw-2 p-1 m-2 btn btn-success rounded'><i class="fas fa-paper-plane"></i> send</button>
+        
+        </div>
+          <ul>
+          <li className='font-monospace'><i class="fas fa-user-tie p-2"></i>Kati ramro xa tah ghar</li>
+          <li className='font-monospace'><i class="fas fa-user-tie p-2"></i>Dherai nai man paro</li>
+          </ul>
+        </div>
+    
+          {/* Contact owner section */}
+          <div class="col-md-12  ">
+
             <div class="row section-t3">
               <div class="col-sm-12">
                 <div class="title-box-d">
-                  <h3 class="title-d">Contact Agent</h3>
+                  <h3 class="title-d">Contact Owner</h3>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6 col-lg-4">
-                <img src="assets/img/agent-4.jpg" alt="" class="img-fluid"/>
-              </div>
+
+
+            <div class="row d-flex justify-content-between">
+
               <div class="col-md-6 col-lg-4">
                 <div class="property-agent">
-                  <h4 class="title-agent">Anabella Geller</h4>
-                  <p class="color-text-a">
+
+                  <h4 class="title-agent">John Hawkins</h4>
+                  <p class="color-text-a font-monospace">
                     Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
                     dui. Quisque velit nisi,
                     pretium ut lacinia in, elementum id enim.
@@ -213,10 +217,16 @@ const PropertySingle = () => {
                       </li>
                     </ul>
                   </div>
-                </div>
+               </div>
               </div>
+
+              {/* Send Message */}
+              
               <div class="col-md-12 col-lg-4">
                 <div class="property-contact">
+
+              
+
                   <form class="form-a">
                     <div class="row">
                       <div class="col-md-12 mb-1">
