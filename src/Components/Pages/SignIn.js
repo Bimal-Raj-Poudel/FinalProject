@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function SignIn() {
+export default function SignIn({setAuthUser}) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleLoginSubmit =  (e) =>{
         e.preventDefault();
@@ -16,7 +18,16 @@ export default function SignIn() {
            //HttpOnly--> prevent client side scripts from accessing the cookie
            //Max-Age=3600;
           document.cookie = `AuthCredentials=${credentials}; HttpOnly; SameSite=Strict`;
-          console.log(credentials);
+          const user = {
+            name:"Aashis",
+            email:email,
+            password:password,
+            isAuthenticated: true
+      }
+      setAuthUser(user);
+          // console.log(credentials);
+          navigate('/');
+
         }catch(err){
           console.log("Error Occured :",err.message);
           setError("Invalis credentials"); //Throw after failing login

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../App';
 
-const Navbar = () => {
+const Navbar = ({setAuthUser}) => {
 
   const [isActive, setActive] = useState(false);
+
+  const authUser =useContext(AuthContext);
 
   const handleDeActive = () =>{
 
@@ -56,59 +59,42 @@ const Navbar = () => {
 
           <li className="nav-item">
             <Link to= "/nearMe" > 
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} onClick={handleActive}>NearMe</p></Link>
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
+            onClick={handleActive}>NearMe</p></Link>
           </li>
 
           <li className="nav-item">
             <Link to= "/request" > 
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} onClick={handleActive}>Request</p></Link>
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
+            onClick={handleActive}>Request</p></Link>
           </li>
 
           <li className="nav-item">
             <Link to= "/contactUs" > 
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} onClick={handleActive}>Contact Us</p></Link>
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
+            onClick={handleActive}>Contact Us</p></Link>
           </li>
 
           <li className="nav-item">
             <Link to= "/SignIn" > 
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} onClick={handleActive}>Login</p></Link>
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
+            onClick={handleActive}>{authUser.isAuthenticated?`Hello, ${authUser.name}`:'LogIn'}</p></Link>
           </li>
 
+          <li className="nav-item">
+          </li>
         </ul>
       </div>
-
-      
-{/* <form class="d-flex" role="search">
-        <input className="form-control me-2 border border-4 border-success" type="search" placeholder="Search" aria-label="Search"/>
-      </form> */}
-
-
-      {/* <button type="button" className="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse d-flex rounded" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-        <input
-        type="text"
-        placeholder='Search'
-        className="form-control border border-success" 
-      />
-      <i className='bi bi-search m-1' />
-      </button> */}
-      {/* <div className='d-flex justify-content-center align-items-top'>
-      <div className="nav-item m-2">
-            <Link to= "/signIn" > 
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} onClick={handleActive}>Login</p></Link>
-          </div>
-          <div>
-       <div className='d-flex text-bg-success border rounded p-1 '> */}
-        
-      {/* <input
-        type="text"
-        placeholder="Search"
-        className="form-control border border-success rounded-start"
-        style={{ flex: '1', marginRight: '5px' }}
-      />
-      <i className="bi bi-search m-1"></i> */}
-    {/* </div>
-    </div>
-    </div> */}
+      <div class="dropdown font-monospace">
+      <a class={`btn btn-success dropdown-toggle ${authUser.isAuthenticated?"visible":"invisible"}`}  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+       <i class="bi bi-speedometer"> DashBoard</i>
+      </a>
+      <ul class="dropdown-menu rounded">
+    <li><Link class="dropdown-item" to="/dashBoard">My Listing</Link></li>
+    <li><Link class="dropdown-item" to="#" onClick={e => setAuthUser('')}>LogOut</Link></li>
+  </ul>
+</div>
+            
     </div>
   </nav>
 

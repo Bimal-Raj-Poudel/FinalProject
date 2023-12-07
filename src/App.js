@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import ContactUs from './Components/Pages/ContactUs';
 import Home from './Components/Pages/Home';
 import Flat from './Components/Pages/Flat';
@@ -20,15 +20,18 @@ import Register from './Components/Pages/Register';
 import NearMe from './Components/Pages/NearMe';
 import Request from './Components/Pages/Request';
 import AllProperty from './Components/Pages/AllProperty';
+import UserDashBoard from './Components/Pages/UserDashBoard';
+import Error from './Components/Pages/Error';
 import './App.css'
+import { createContext, useState } from 'react';
+import EditHome from './Components/Pages/EditHome';
+
+export const AuthContext = createContext();
 
 function App() {
+const [authUser, setAuthUser] = useState({});
 
-  const {id} = useParams();
-
-  const isAdmin = false;
-
-  if(isAdmin){
+  if(authUser.email == "admin@gmail.com"){
     return( 
     <div className='Flex-Container'>
 
@@ -42,14 +45,15 @@ function App() {
           <Route path="/admin/category" element={<AdminCategory/>}></Route> 
           </Routes>
           </div>
-    
-      </div>)
+      </div>
+      )
   }
 
   else {
   return (
     <>
-      <Navbar />
+    <AuthContext.Provider value={authUser}>
+      <Navbar setAuthUser={setAuthUser}/>
       <Routes>
         <Route path="/" element={<Home />}> </Route>
         <Route path="/contactUs" element={<ContactUs/>}> </Route>
@@ -63,13 +67,14 @@ function App() {
         <Route path="/aboutUs" element={<AboutUs/>}></Route> 
         <Route path="/nearMe" element={<NearMe/>}></Route> 
         <Route path="/register" element={<Register />}> </Route>
-        <Route path="/signIn" element={<SignIn/>}></Route>  
+        <Route path="/signIn" element={<SignIn setAuthUser={setAuthUser}/>}></Route>  
         <Route path="/request" element={<Request/>}></Route>   
+        <Route path='/dashboard' element={<UserDashBoard />}></Route>
+        <Route path='/dashboard/home/:id' element={<EditHome />}></Route>
+        <Route element={<Error />}> </Route>
       </Routes>
-
-
       <Footer />
-     
+      </AuthContext.Provider>
       </>
   );
   }
