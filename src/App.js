@@ -71,7 +71,7 @@ const [authUser, setAuthUser] = useState({});
         <Route path="/request" element={<Request/>}></Route>   
         <Route path='/dashboard' element={<UserDashBoard />}></Route>
         <Route path='/dashboard/home/:id' element={<EditHome />}></Route>
-        <Route element={<Error />}> </Route>
+        <Route path='*' element={<Error />} > </Route>
       </Routes>
       <Footer />
       </AuthContext.Provider>
