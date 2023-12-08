@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Rating from './Rating';
 
 const PropertySingle = () => {
   const propertyDetails = [
@@ -35,6 +36,8 @@ const PropertySingle = () => {
                      <img src="/assets/img/slide-2.jpg" alt="Error Loading..." style={{ width: '100%', height: '400px' }}/>
                   </div>
                 </div>
+
+                <div className='left-0'><Rating/></div>
 
                 <div class="property-summary">
                   <div class="row">

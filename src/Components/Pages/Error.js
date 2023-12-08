@@ -1,4 +1,5 @@
 import React from 'react'
+import Rating from './Rating'
 
 export default function Error() {
   return (

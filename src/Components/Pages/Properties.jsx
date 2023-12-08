@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from './Rating';
 import { Link } from 'react-router-dom';
 
 const Properties = () => {
@@ -100,6 +101,7 @@ const Properties = () => {
           <div className="col-md-4" key={index+1}>
               <div className="card-box-a card-shadow">
               <div className="img-box-a">
+                <span className='position-absolute m-2'><Rating /></span>
                 <img src="assets/img/property-1.jpg" alt="" className="img-a img-fluid"/>
               </div>
               <div className="card-overlay">
