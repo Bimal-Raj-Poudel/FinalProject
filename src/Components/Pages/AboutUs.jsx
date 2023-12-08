@@ -1,7 +1,7 @@
 const AboutUs = () => {
   return (
     <>
-      <section className="section-about">
+      <section className="section-about mt-2">
       <div className="container">
         <div className="row">
           <div className="col-sm-12 position-relative">
@@ -13,7 +13,7 @@ const AboutUs = () => {
                 <span></span>
                 <br/> Since 2023
               </h3>
-              <p>Art & Creative</p>
+              <p className="text-white">Art & Creative</p>
             </div>
           </div>
           <div className="col-md-12 section-t8 position-relative">
@@ -52,7 +52,7 @@ const AboutUs = () => {
         </div>
       </div>
     </section>
-
+                      {/* TEAM MEMBER INFO */}
     <section className="section-agents section-t8">
       <div className="container">
         <div className="row">
@@ -68,13 +68,13 @@ const AboutUs = () => {
           <div className="col-md-4">
             <div className="card-box-d">
               <div className="card-img-d">
-                <img src="assets/img/agent-7.jpg" alt="" className="img-d img-fluid"/>
+                <img src="assets/teammemberphotos/aashis.jpg" alt="" className="img-d img-fluid" style={{ width: '100%', height: '400px' }}/>
               </div>
               <div className="card-overlay card-overlay-hover">
                 <div className="card-header-d">
                   <div className="card-title-d align-self-center">
                     <h3 className="title-d">
-                      <a href="agent-single.html" className="link-two">Aashsis
+                      <a href="agent-single.html" className="link-two">Aashis
                         <br/> Panday</a>
                     </h3>
                   </div>
@@ -83,11 +83,11 @@ const AboutUs = () => {
                   <p className="content-d color-text-a">
                     Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
                   </p>
-                  <div className="info-agents color-a">
-                    <p>
+                  <div className="info-agents color-a ">
+                    <p className="text-white">
                       <strong>Phone: </strong> 977 9831245658
                     </p>
-                    <p>
+                    <p className="text-white">
                       <strong>Email: </strong> Aashis@examplemail.com
                     </p>
                   </div>
@@ -124,7 +124,7 @@ const AboutUs = () => {
           <div className="col-md-4">
             <div className="card-box-d">
               <div className="card-img-d">
-                <img src="assets/img/agent-6.jpg" alt="" className="img-d img-fluid"/>
+                <img src="assets/teammemberphotos/bimal.jpg" alt="" className="img-d img-fluid" style={{ width: '100%', height: '400px' }}/>
               </div>
               <div className="card-overlay card-overlay-hover">
                 <div className="card-header-d">
@@ -140,10 +140,10 @@ const AboutUs = () => {
                     Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
                   </p>
                   <div className="info-agents color-a">
-                    <p>
+                    <p className="text-white">
                       <strong>Phone: </strong> +977 9869587255
                     </p>
-                    <p>
+                    <p className="text-white">
                       <strong>Email: </strong> bimal@examplemail.com
                     </p>
                   </div>
@@ -185,7 +185,7 @@ const AboutUs = () => {
           <div className="col-md-4">
             <div className="card-box-d">
               <div className="card-img-d">
-                <img src="assets/img/agent-5.jpg" alt="" className="img-d img-fluid"/>
+                <img src="assets/teammemberphotos/raju.jpg" alt="" className="img-d img-fluid" style={{ width: '100%', height: '400px' }}/>
               </div>
               <div className="card-overlay card-overlay-hover">
                 <div className="card-header-d">
@@ -200,11 +200,11 @@ const AboutUs = () => {
                   <p className="content-d color-text-a">
                     Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
                   </p>
-                  <div className="info-agents color-a">
-                    <p>
+                  <div className="info-agents">
+                    <p className="text-white">
                       <strong>Phone: </strong> +977 9805486834
                     </p>
-                    <p>
+                    <p className="text-white">
                       <strong>Email: </strong> raju@examplemail.com
                     </p>
                   </div>

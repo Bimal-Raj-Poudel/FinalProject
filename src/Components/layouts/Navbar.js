@@ -1,62 +1,100 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../App';
 
-const Navbar = () => {
+const Navbar = ({setAuthUser}) => {
+
+  const [isActive, setActive] = useState(false);
+
+  const authUser =useContext(AuthContext);
+
+  const handleDeActive = () =>{
+
+  }
+
+  const handleActive = () =>{
+    handleDeActive();
+    setActive(true);
+  }
+
   return (
     <>
-  <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+  <nav className="navbar navbar-default navbar-trans navbar-expand-lg sticky-top">
     <div className="container">
-      <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <a className="navbar-brand text-brand" href="index.html">Ghar<span className="color-b">Bhada</span></a>
+     
+      <Link className="navbar-brand text-brand" to="/"><strong>Ghar</strong><span className="color-b"><strong>Bhada</strong></span></Link>
+      
+      <div className="navbar-collapse collapse justify-content-evenly" id="navbarDefault">
 
-      <div className="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul className="navbar-nav">
+        <ul className="navbar-nav text-decoration-none ">
 
           <li className="nav-item">
            <Link to="/" > 
-           <p className="nav-link active" >Home</p>
+           <p className="nav-link active text-decoration-none text-success text-decoration-underline" >Home</p>
            </Link>
           </li>
 
           <li className="nav-item">
-            <Link to="/aboutUs">
-            <p className="nav-link ">AboutUs</p></Link>
+            <Link to="/property">
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive' }`} onClick={handleActive}>Property</p></Link>
           </li>
 
           <li className="nav-item">
-            <Link to='/property'>
-            <p className="nav-link">Property</p>
-            </Link>
+            <Link to="/aboutUs">
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive' }`} onClick={handleActive}>AboutUs</p></Link>
           </li>
 
-         
 
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Service Provided</a>
-            <div className="dropdown-menu">
-              <Link to="/SingleRoom"><p className="dropdown-item " > SingleRooms </p></Link>
-              <Link to="/ShutterRoom"><p className="dropdown-item "> Shutter Rooms </p></Link>
-              <Link to="/House"><p className="dropdown-item " > House </p></Link>
-              <Link to="/Flat"><p className="dropdown-item " > Flat </p></Link>
-              <Link to="/Officespace"><p className="dropdown-item " > Office Space </p></Link>
-             
+            <a className="nav-link dropdown text-success" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Category</a>
+            <div className="dropdown-menu ">
+              <Link to="/singleRoom"><p className="dropdown-item text-success" > SingleRooms </p></Link>
+              <Link to="/shutterRoom"><p className="dropdown-item text-success"> Shutter Rooms </p></Link>
+              <Link to="/house"><p className="dropdown-item text-success" > House </p></Link>
+              <Link to="/flat"><p className="dropdown-item text-success" > Flat </p></Link>
+              <Link to="/officeSpace"><p className="dropdown-item text-success" > Office Space </p></Link>
             </div>
           </li>
+
           <li className="nav-item">
-            <Link to= "/ContactUs" > 
-            <p className="nav-link ">Contact Us</p></Link>
+            <Link to= "/nearMe" > 
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
+            onClick={handleActive}>NearMe</p></Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to= "/request" > 
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
+            onClick={handleActive}>Request</p></Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to= "/contactUs" > 
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
+            onClick={handleActive}>Contact Us</p></Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to= "/SignIn" > 
+            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
+            onClick={handleActive}>{authUser.isAuthenticated?`Hello, ${authUser.name}`:'LogIn'}</p></Link>
+          </li>
+
+          <li className="nav-item">
           </li>
         </ul>
       </div>
-
-      <button type="button" className="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-        <i className="bi bi-search"> Search By Place</i>
-      </button>
-
+      <div class="dropdown font-monospace">
+      <a class={`btn btn-success dropdown-toggle ${authUser.isAuthenticated?"visible":"invisible"}`}  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+       <i class="bi bi-speedometer"> DashBoard</i>
+      </a>
+      <ul class="dropdown-menu rounded">
+    <li><Link class="dropdown-item" to="/dashBoard">My Listing</Link></li>
+    <li><Link class="dropdown-item" to="#" onClick={e => setAuthUser('')}>LogOut</Link></li>
+  </ul>
+</div>
+            
     </div>
   </nav>
 

@@ -1,10 +1,12 @@
 import React from 'react';
+import Properties from './Properties';
 
 const House = () => {
   return (
-    <>
-      
-      this is from house subdivision place.
+    <> 
+    <div className=''>
+     <Properties />
+     </div>
     </>
   );
 }

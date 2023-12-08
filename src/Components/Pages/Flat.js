@@ -1,11 +1,12 @@
 import React from 'react';
+import Properties from './Properties';
 
 export default function Flat() {
   return (
     <>
-      
-      hello from flat page
-
+      <div className='mt-3'>
+      <Properties />
+      </div>
     </>
   );
 }

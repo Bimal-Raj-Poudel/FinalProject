@@ -131,7 +131,7 @@ const PropertyPage = () => {
                                                     <div className="price-box d-flex">
                                                         <span className="price-a">rent | $ {data.rentPrice}</span>
                                                     </div>
-                                                    <Link to="/propertySingle">
+                                                    <Link to="/property">
                                                     <p className="link-a">Click here to view
                                                         <span className="bi bi-chevron-right"></span>
                                                     </p>
