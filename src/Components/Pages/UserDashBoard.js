@@ -97,7 +97,7 @@ export default function UserDashBoard() {
                     <div className="price-box d-flex">
                       <span className="price-a">rent | RS. {data.rentPrice}</span>
                     </div>
-                    <Link to={`/dashboard/home/${index}`}  className="link-a">Click here to view
+                    <Link to={`/dashboard/home/${index}`}  className="link-a">Click here to Edit Info
                       <span className="bi bi-chevron-right"></span>
                     </Link>
                   </div>

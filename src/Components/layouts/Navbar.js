@@ -1,19 +1,23 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
 
 const Navbar = ({setAuthUser}) => {
+
+  const navigate = useNavigate();
 
   const [isActive, setActive] = useState(false);
 
   const authUser =useContext(AuthContext);
 
-  const handleDeActive = () =>{
+  console.log("User from navBar",authUser.name)
 
-  }
+const handleLogOut = () =>{
+  setAuthUser('');
+  navigate('/');
+}  
 
   const handleActive = () =>{
-    handleDeActive();
     setActive(true);
   }
 
@@ -46,9 +50,9 @@ const Navbar = ({setAuthUser}) => {
 
 
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown text-success" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a className="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Category</a>
-            <div className="dropdown-menu ">
+            <div className="dropdown-menu " aria-labelledby="navbarDropdown">
               <Link to="/singleRoom"><p className="dropdown-item text-success" > SingleRooms </p></Link>
               <Link to="/shutterRoom"><p className="dropdown-item text-success"> Shutter Rooms </p></Link>
               <Link to="/house"><p className="dropdown-item text-success" > House </p></Link>
@@ -91,7 +95,7 @@ const Navbar = ({setAuthUser}) => {
       </a>
       <ul class="dropdown-menu rounded">
     <li><Link class="dropdown-item" to="/dashBoard">My Listing</Link></li>
-    <li><Link class="dropdown-item" to="#" onClick={e => setAuthUser('')}>LogOut</Link></li>
+    <li><Link class="dropdown-item" to="#" onClick={handleLogOut}>LogOut</Link></li>
   </ul>
 </div>
             

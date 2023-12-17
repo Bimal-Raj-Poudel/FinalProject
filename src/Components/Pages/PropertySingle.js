@@ -1,8 +1,29 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Rating from './Rating';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const PropertySingle = () => {
+
+  const [singleHome, setSingleHome] = useState({});
+  const [rate, setRate] = useState(1);
+
+  const {id} = useParams();
+
+  const fetchData = () => {
+
+     axios.get(`http://localhost:8080/api/home/${id}`)
+     .then(res => setSingleHome(res.data))
+     .catch(error => console.log("Error in single Property :", error.message));
+  }
+
+  useEffect(() => {
+    fetchData();
+  },[])
+
+  console.log("Id :", id);
+  
   const propertyDetails = [
     {
         propertyTItle: "204 Mount Olive Road Two",
@@ -32,12 +53,20 @@ const PropertySingle = () => {
                {/* Image and Badge setup */}
                 <div class="d-flex justify-content-center ">
                   <div className="card-header-c d-flex">
-                  <span class={`badge text-bg-${'primary'} position-absolute m-3`}>{"Available"}</span>
+                  <span class={`badge text-bg-${singleHome.rented ?'danger' :'primary'} position-absolute m-3`}>{singleHome.rented ? "NotAvailable":"Available"}</span>
                      <img src="/assets/img/slide-2.jpg" alt="Error Loading..." style={{ width: '100%', height: '400px' }}/>
                   </div>
                 </div>
 
-                <div className='left-0'><Rating/></div>
+                <div className='left-0'><Rating stars = {singleHome.averageRating}/></div>
+
+                <div className='d-flex  justify-content-center  rounded gap-1'>
+                  <h6 className='font-monospace fs-5'>Rate your experience. </h6>
+                  <div className='d-flex gap-2'> 
+                  <i class="bi bi-patch-minus-fill text-warning fs-5" onClick={e => setRate(rate===1?(1):(rate-1))} style={{cursor:'pointer'}} /><span className='fs-5 fw-bolder'>{rate}</span><i class="bi bi-patch-plus-fill  text-warning  fs-5" onClick={e => setRate(rate===5?(5):(rate+1))} style={{cursor:'pointer'}} />
+                  <i class="bi bi-send-fill text-warning  fs-5" style={{cursor:'pointer'}} >Send</i>
+                  </div>
+                </div>
 
                 <div class="property-summary">
                   <div class="row">
@@ -51,7 +80,7 @@ const PropertySingle = () => {
                     <ul class="list">
                       <li class="d-flex justify-content-between">
                         <strong>Property ID:</strong>
-                        <span>1134</span>
+                        <span>{singleHome.home_id}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Location:</strong>
@@ -59,11 +88,11 @@ const PropertySingle = () => {
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Property Type:</strong>
-                        <span>House</span>
+                        <span>{singleHome.category && singleHome.category.categoryName}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Status:</strong>
-                        <span>Sale</span>
+                        <span>{singleHome.rented ? 'Yes':'No'}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Area:</strong>
@@ -95,7 +124,7 @@ const PropertySingle = () => {
                     </div>
                   </div>
                 </div>
-                <div class="property-description">
+                <div class="property-description ">
                   <p class="description color-text-a fw-semibold">
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
                     neque, auctor sit amet
@@ -103,11 +132,11 @@ const PropertySingle = () => {
                     Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt
                     nibh pulvinar quam id dui posuere blandit.
                   </p>
-                  <p class="description color-text-a no-margin">
+                  {/* <p class="description color-text-a no-margin">
                     Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
                     malesuada. Quisque velit nisi,
                     pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
-                  </p>
+                  </p> */}
                 </div>
                 <div class="row section-t3">
                   <div class="col-sm-12">
@@ -135,7 +164,7 @@ const PropertySingle = () => {
           {/* MAP Location of Property */}
           <div className='mt-2'>
             <h4>See Location</h4>
-            <iframe src={`https://maps.google.com/maps?q=${25.5},${25.3}&hl=es;&output=embed`} id="iframeId" height="500px" width="100%"></iframe>
+            <iframe src={`https://maps.google.com/maps?q=${singleHome.latitude},${singleHome.longitude}&hl=es;&output=embed`} id="iframeId" height="500px" width="100%"></iframe>
         </div>
 
         {/* Comment section */}
@@ -172,7 +201,7 @@ const PropertySingle = () => {
               <div class="col-md-6 col-lg-4">
                 <div class="property-agent">
 
-                  <h4 class="title-agent">John Hawkins</h4>
+                  <h4 class="title-agent">{singleHome.person && singleHome.person.name}</h4>
                   <p class="color-text-a font-monospace">
                     Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
                     dui. Quisque velit nisi,
@@ -181,7 +210,7 @@ const PropertySingle = () => {
                   <ul class="list-unstyled">
                     <li class="d-flex justify-content-between">
                       <strong>Phone:</strong>
-                      <span class="color-text-a">(222) 4568932</span>
+                      <span class="color-text-a">(+977) {singleHome.person && singleHome.person.phone}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Mobile:</strong>
@@ -189,11 +218,11 @@ const PropertySingle = () => {
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Email:</strong>
-                      <span class="color-text-a">annabella@example.com</span>
+                      <span class="color-text-a">{singleHome.person && singleHome.person.email}</span>
                     </li>
                     <li class="d-flex justify-content-between">
-                      <strong>Skype:</strong>
-                      <span class="color-text-a">Annabela.ge</span>
+                      <strong>Address:</strong>
+                      <span class="color-text-a">{singleHome.person && singleHome.person.address}</span>
                     </li>
                   </ul>
                   <div class="socials-a">

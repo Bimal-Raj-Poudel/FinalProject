@@ -85,7 +85,9 @@ const ContactUs = () => {
                     </div>
                     <div className="icon-box-content">
                       <p className="mb-1">Email.
-                        <span className="color-a">contact@example.com</span>
+                        
+                        <a href="mailto:example@example.com">Send Email</a>
+
                       </p>
                       <p className="mb-1">Phone.
                         <span className="color-a">+977 9865474624</span>

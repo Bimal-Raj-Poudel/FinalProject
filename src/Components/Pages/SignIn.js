@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function SignIn({setAuthUser}) {
 
@@ -9,32 +11,62 @@ export default function SignIn({setAuthUser}) {
 
   const navigate = useNavigate();
 
-  const handleLoginSubmit =  (e) =>{
+  const handleLoginSubmit =  async (e) =>{
         e.preventDefault();
         try{
-          const credentials = btoa(`${email}:${password}`)
+
+          const encodedCredentials = btoa(`${email}:${password}`)
+         
+            const response = await axios.get(`http://localhost:8080/api/person/email/${email}`,{
+               withCredentials:true,
+              headers: {
+                Authorization: `Basic ${encodedCredentials}`
+              }
+            })
+
+           if(response.status === 200){
+            const user = {
+            person_id: response.data.person_id, 
+            name: response.data.name, 
+            email: response.data.email, 
+            password: response.data.password, 
+            phone: response.data.phone,
+            address: response.data.address,
+            isAuthenticated: true
+            }
+            console.log(user);
+            setAuthUser(user);
+           }
+           
           // Authorization: `Basic ${credentials}`
            // Set the token in a secure-->Cookies only sent over HTTPs request, 
            //HttpOnly--> prevent client side scripts from accessing the cookie
            //Max-Age=3600;
-          document.cookie = `AuthCredentials=${credentials}; HttpOnly; SameSite=Strict`;
-          const user = {
-            name:"Aashis",
-            email:email,
-            password:password,
-            isAuthenticated: true
-      }
-      setAuthUser(user);
-          // console.log(credentials);
-          navigate('/');
+         document.cookie = `AuthCredentials=${encodedCredentials}; HttpOnly; SameSite=Strict`;
+         //Toastify
+         toast.success("Logged in successfully.", {
+          position: "top-center",
+          autoClose: 3000,
+          theme: "colored"
+        });
 
-        }catch(err){
-          console.log("Error Occured :",err.message);
-          setError("Invalis credentials"); //Throw after failing login
+         navigate('/');
+        }catch(error){
+          console.log("Error Occured :",error.message);
+
+          if (error.response && error.response.status === 401) {
+            // Handle unauthorized access here (e.g., display an error message)
+            console.log('Unauthorized access. Display a custom login form or message.');
+          } else {
+            // Handle other errors
+            console.error('Error occurred:', error.message);
+          }
+          setError("Invalid credentials"); //Throw after failing login
         }
-
+      
         setEmail('');
         setPassword('');
+        
   }
 
   return (
@@ -47,18 +79,19 @@ export default function SignIn({setAuthUser}) {
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
+
               <form onSubmit={handleLoginSubmit}>
               <h2 class="fw-bolder mb-2 text-uppercase">Login</h2>
               <p class="text-dark-10 mb-5">Please enter your Email and password!</p>
 
               <div class="form-outline form-white mb-4">
-                <input type="email" id="typeEmailX" class="form-control form-control-lg" value={email} onChange={e =>setEmail(e.target.value) } required/>
-                <label class="form-label" for="typeEmailX">Email</label>
+                <input type="email" id="typeEmailX" class="form-control form-control-lg " placeholder='Enter Email' value={email} onChange={e =>setEmail(e.target.value) } required/>
+                {/* <p className='text-dark mt-1'>{" Email Error"}</p> */}
               </div>
 
               <div class="form-outline form-white mb-4">
-                <input type="password" id="typePasswordX" class="form-control form-control-lg" value={password} onChange={e =>setPassword(e.target.value) } required/>
-                <label class="form-label" for="typePasswordX">Password</label>
+                <input type="password" id="typePasswordX" class="form-control form-control-lg " placeholder='Enter Password' value={password} onChange={e =>setPassword(e.target.value) } required/>
+                {/* <label class="form-label mt-1" for="typePasswordX">Password</label> */}
               </div>
 
               <button class="btn btn-outline-light btn-lg px-5" type="submit" >Login</button>
@@ -67,6 +100,10 @@ export default function SignIn({setAuthUser}) {
                 <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
                 <a href="#" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
                 <a href="#" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+              </div>
+
+              <div className='text-danger'>
+                {error}
               </div>
 
               <p class="mb-0">Don't have an account? <Link to="/register" className='text-white-50 fw-bold'>Register</Link>
@@ -84,7 +121,6 @@ export default function SignIn({setAuthUser}) {
     </div>
   </div>
 </section>
-       
     </>
   );
 }

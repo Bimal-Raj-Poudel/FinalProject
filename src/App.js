@@ -4,7 +4,7 @@ import Home from './Components/Pages/Home';
 import Flat from './Components/Pages/Flat';
 import House from './Components/Pages/House';
 import OfficeSpace from './Components/Pages/OfficeSpace';
-import ShutterRoom from './Components/Pages/shutterroom';
+import ShutterRoom from './Components/Pages/ShutterRoom';
 import SingleRoom from './Components/Pages/SingleRoom';
 import SignIn from './Components/Pages/SignIn';
 import Footer from './Components/layouts/Footer';
@@ -25,13 +25,15 @@ import Error from './Components/Pages/Error';
 import './App.css'
 import { createContext, useState } from 'react';
 import EditHome from './Components/Pages/EditHome';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AuthContext = createContext();
 
 function App() {
 const [authUser, setAuthUser] = useState({});
 
-  if(authUser.email == "admin@gmail.com"){
+  if(authUser.email === "admin@gmail.com"){
     return( 
     <div className='Flex-Container'>
 
@@ -74,6 +76,7 @@ const [authUser, setAuthUser] = useState({});
         <Route path='*' element={<Error />} > </Route>
       </Routes>
       <Footer />
+      <ToastContainer />
       </AuthContext.Provider>
       </>
   );
