@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../../App';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -9,6 +10,7 @@ export default function Request() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [validation, setValidation] = useState({});
 
+  const authUser =useContext(AuthContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -60,7 +62,7 @@ export default function Request() {
     e.preventDefault();
      try{
 
-    const response = await axios.post(`http://localhost:8080/api/home/person/${'09213c81-f895-4dd0-bf08-dcf5b115a45c'}/category/${categoryId}`,formData);
+    const response = await axios.post(`http://localhost:8080/api/home/person/${authUser.person_id}/category/${categoryId}`,formData);
 
     console.log("Uploaded Home is :", response.data.home_id);
     if(response.status === 201){

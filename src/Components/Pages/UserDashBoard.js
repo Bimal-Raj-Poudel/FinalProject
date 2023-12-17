@@ -1,85 +1,43 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../App';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function UserDashBoard() {
-    const propertyDetails = [
-        {
-          propertyTItle: "204 Mount Olive Road Two",
-          rentPrice: 12000,
-          link: "",
-          roomDetails: {
-            area: 340,
-            beds: 2,
-            baths: 3,
-            garages: 1
-          }
-        },
-        {
-          propertyTItle: "204 Mount Olive Road Two",
-          rentPrice: 12000,
-          link: "",
-          roomDetails: {
-            area: 340,
-            beds: 2,
-            baths: 3,
-            garages: 1
-          }
-        },
-        {
-          propertyTItle: "204 Mount Olive Road Two",
-          rentPrice: 12000,
-          link: "",
-          roomDetails: {
-            area: 340,
-            beds: 2,
-            baths: 3,
-            garages: 1
-          }
-        },
-        {
-          propertyTItle: "204 Mount Olive Road Two",
-          rentPrice: 12000,
-          link: "",
-          roomDetails: {
-            area: 340,
-            beds: 2,
-            baths: 3,
-            garages: 1
-          }
-        },
-        {
-          propertyTItle: "204 Mount Olive Road Two",
-          rentPrice: 12000,
-          link: "",
-          roomDetails: {
-            area: 340,
-            beds: 2,
-            baths: 3,
-            garages: 1
-          }
-        },
-        {
-          propertyTItle: "204 Mount Olive Road Two",
-          rentPrice: 12000,
-          link: "",
-          roomDetails: {
-            area: 340,
-            beds: 2,
-            baths: 3,
-            garages: 1
-          }
-        },
-        
-      ]
+
+  const [reload, setReload] = useState(false);
+  const authUser =useContext(AuthContext);
+  const [home, setHome] = useState([]);
+  console.log(authUser);
+
+  useEffect(() => {
+    console.log(authUser.person_id)
+     axios.get(`http://localhost:8080/api/home/person/${authUser.person_id}`)
+     .then(res => setHome(res.data))
+     .catch(error => console.log("Error fetching homes by personId :",error.message));
+  },[])
+
+  const handleDelete = (homeId) => {
+    const response = axios.delete(`http://localhost:8080/api/home/${homeId}/person/${authUser.person_id}`)
+    if(response.status === 200){
+      toast.warn("Home has been listed.", {
+        position: "top-center",
+        autoClose: 3000,
+        theme: "colored"
+      });
+    }
+  }
+
   return (
-<>
+<div className='mt-5'>
     <div id="main d-flex flex-column mt-5">
 
     <section className="property-grid grid">
       <div className="container">
         <div className="row">
 
-        {propertyDetails.map((data, index)=>(
+        {home && home.map((data, index)=>(
 
           <div className="col-md-4" key={index+1}>
               <div className="card-box-a card-shadow">
@@ -90,12 +48,12 @@ export default function UserDashBoard() {
                 <div className="card-overlay-a-content">
                   <div className="card-header-a">
                     <h2 className="card-title-a">
-                      <a href="#">{data.propertyTItle}</a>
+                      <a href="#">{data.title}</a>
                     </h2>
                   </div>
                   <div className="card-body-a">
                     <div className="price-box d-flex">
-                      <span className="price-a">rent | RS. {data.rentPrice}</span>
+                      <span className="price-a">rent | RS. {data.price}</span>
                     </div>
                     <Link to={`/dashboard/home/${index}`}  className="link-a">Click here to Edit Info
                       <span className="bi bi-chevron-right"></span>
@@ -107,7 +65,7 @@ export default function UserDashBoard() {
                    {/* Delete Button Setup */}
                     <ul className="card-info d-flex justify-content-around">
                     <li>
-                    <button type="button" class="btn btn-danger"><h4>Delete</h4></button>
+                    <button type="button" class="btn btn-danger" onClick={e => handleDelete(data.home_id)}><h4>Delete</h4></button>
                     </li>
                     </ul>
                   </div>
@@ -121,6 +79,6 @@ export default function UserDashBoard() {
     </section>
 
     </div>
-    </>
+    </div>
   )
 }
