@@ -32,36 +32,39 @@ export default function SignIn({setAuthUser}) {
             password: response.data.password, 
             phone: response.data.phone,
             address: response.data.address,
-            isAuthenticated: true
+            isAuthenticated: true,
+            encodedCredentials:encodedCredentials
             }
-            console.log(user);
             setAuthUser(user);
+            document.cookie = `AuthCredentials=${encodedCredentials}; HttpOnly; SameSite=Strict`;
+             //Toastify
+         toast.success("Logged in successfully.", {
+          position: "top-center",
+          autoClose: 3000,
+          theme: "colored"
+        });
+        navigate('/');
            }
            
           // Authorization: `Basic ${credentials}`
            // Set the token in a secure-->Cookies only sent over HTTPs request, 
            //HttpOnly--> prevent client side scripts from accessing the cookie
            //Max-Age=3600;
-         document.cookie = `AuthCredentials=${encodedCredentials}; HttpOnly; SameSite=Strict`;
-         //Toastify
-         toast.success("Logged in successfully.", {
-          position: "top-center",
-          autoClose: 3000,
-          theme: "colored"
-        });
+         
+        
 
-         navigate('/');
+         
         }catch(error){
           console.log("Error Occured :",error.message);
 
           if (error.response && error.response.status === 401) {
             // Handle unauthorized access here (e.g., display an error message)
+            setError("Invalid Username or Password.")
             console.log('Unauthorized access. Display a custom login form or message.');
           } else {
             // Handle other errors
             console.error('Error occurred:', error.message);
           }
-          setError("Invalid credentials"); //Throw after failing login
         }
       
         setEmail('');
@@ -82,7 +85,7 @@ export default function SignIn({setAuthUser}) {
 
               <form onSubmit={handleLoginSubmit}>
               <h2 class="fw-bolder mb-2 text-uppercase">Login</h2>
-              <p class="text-dark-10 mb-5">Please enter your Email and password!</p>
+              <p class="text-dark fw-bolder mb-5">Please enter your Email and password !</p>
 
               <div class="form-outline form-white mb-4">
                 <input type="email" id="typeEmailX" class="form-control form-control-lg " placeholder='Enter Email' value={email} onChange={e =>setEmail(e.target.value) } required/>
@@ -94,6 +97,10 @@ export default function SignIn({setAuthUser}) {
                 {/* <label class="form-label mt-1" for="typePasswordX">Password</label> */}
               </div>
 
+              <div className='text-warning mb-3'>
+                {error}
+              </div>
+
               <button class="btn btn-outline-light btn-lg px-5" type="submit" >Login</button>
 
               <div class="d-flex justify-content-center text-center mt-4 mb-2 pt-1">
@@ -102,9 +109,7 @@ export default function SignIn({setAuthUser}) {
                 <a href="#" class="text-white"><i class="fab fa-google fa-lg"></i></a>
               </div>
 
-              <div className='text-danger'>
-                {error}
-              </div>
+              
 
               <p class="mb-0">Don't have an account? <Link to="/register" className='text-white-50 fw-bold'>Register</Link>
               </p>

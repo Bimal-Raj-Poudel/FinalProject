@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
+import { toast } from 'react-toastify';
 
 const Navbar = ({setAuthUser}) => {
 
@@ -10,20 +11,21 @@ const Navbar = ({setAuthUser}) => {
 
   const authUser =useContext(AuthContext);
 
-  console.log("User from navBar",authUser.name)
-
 const handleLogOut = () =>{
+  navigate(' /');
   setAuthUser('');
-  navigate('/');
+  toast.warn("Logged out successfully",{
+    position: "top-center",
+    autoClose: 2000,
+    theme: "colored"
+  })
+  
 }  
 
-  const handleActive = () =>{
-    setActive(true);
-  }
 
   return (
     <>
-  <nav className="navbar navbar-default navbar-trans navbar-expand-lg sticky-top">
+  <nav className="navbar navbar-default navbar-trans navbar-expand-lg sticky-top text-decoration-none">
     <div className="container">
      
       <Link className="navbar-brand text-brand" to="/"><strong>Ghar</strong><span className="color-b"><strong>Bhada</strong></span></Link>
@@ -40,12 +42,12 @@ const handleLogOut = () =>{
 
           <li className="nav-item">
             <Link to="/property">
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive' }`} onClick={handleActive}>Property</p></Link>
+            <p className={`nav-link text-decoration-underline text-success`} >Property</p></Link>
           </li>
 
           <li className="nav-item">
             <Link to="/aboutUs">
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive' }`} onClick={handleActive}>AboutUs</p></Link>
+            <p className={`nav-link text-decoration-underline text-success `} >AboutUs</p></Link>
           </li>
 
 
@@ -63,26 +65,26 @@ const handleLogOut = () =>{
 
           <li className="nav-item">
             <Link to= "/nearMe" > 
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
-            onClick={handleActive}>NearMe</p></Link>
+            <p className={`nav-link text-decoration-underline text-success `} 
+            >NearMe</p></Link>
           </li>
 
           <li className="nav-item">
             <Link to= "/request" > 
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
-            onClick={handleActive}>Request</p></Link>
+            <p className={`nav-link text-decoration-underline text-success `} 
+            >Request</p></Link>
           </li>
 
           <li className="nav-item">
             <Link to= "/contactUs" > 
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
-            onClick={handleActive}>Contact Us</p></Link>
+            <p className={`nav-link text-decoration-underline text-success `} 
+           >Contact Us</p></Link>
           </li>
 
           <li className="nav-item">
             <Link to= "/SignIn" > 
-            <p className={`nav-link text-decoration-underline text-success ${isActive ? 'active' : 'inactive'}`} 
-            onClick={handleActive}>{authUser.isAuthenticated?`Hello, ${authUser.name}`:'LogIn'}</p></Link>
+            <p className={`nav-link text-decoration-underline text-success `} 
+            >{authUser.isAuthenticated?`Hello, ${authUser.name}`:'LogIn'}</p></Link>
           </li>
 
           <li className="nav-item">

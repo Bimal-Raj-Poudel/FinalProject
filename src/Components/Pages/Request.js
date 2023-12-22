@@ -183,19 +183,20 @@ export default function Request() {
         </select>
     </div>
 
-    <div className='mb-2 font-monospace '>
+    <div className='mb-2 font-monospace ' >
   <label htmlFor="photoInput">Choose a photo:</label>
     <input className='form-select border border-success border-2 bg-light'
           type="file"
           id="photoInput"
           accept="image/*"
           onChange={handleImageChange}
+          required
         />
 </div>
 
-<div className='mb-2 font-monospace'>
+<div className='mb-2 font-monospace' >
   <label htmlFor="locationInput">Allow location:</label><br/>
-  <button id='locationInput' className='btn btn-light border border-success border-2' onClick={handleLocationClick} required><i class="bi bi-compass"></i></button>
+  <button type='button' id='locationInput' className='btn btn-light border border-success border-2' onClick={handleLocationClick} required><i class="bi bi-compass"></i></button>
 </div>
 </div>
 

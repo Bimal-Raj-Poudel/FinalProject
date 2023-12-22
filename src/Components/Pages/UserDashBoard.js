@@ -12,21 +12,34 @@ export default function UserDashBoard() {
   console.log(authUser);
 
   useEffect(() => {
-    console.log(authUser.person_id)
-     axios.get(`http://localhost:8080/api/home/person/${authUser.person_id}`)
+    console.log(authUser.encodedCredentials)
+     axios.get(`http://localhost:8080/api/home/person/${authUser.person_id}`,{
+      headers: {
+        'Authorization': `Basic ${authUser.encodedCredentials}`
+      }
+    })
      .then(res => setHome(res.data))
      .catch(error => console.log("Error fetching homes by personId :",error.message));
-  },[])
+  },[reload])
 
-  const handleDelete = (homeId) => {
-    const response = axios.delete(`http://localhost:8080/api/home/${homeId}/person/${authUser.person_id}`)
+  //Handle delete 
+  const handleDelete = async (homeId) => {
+    console.log("Delete Button clicked :", homeId)
+    const response = await axios.delete(`http://localhost:8080/api/home/${homeId}/person/${authUser.person_id}`,{
+      headers: {
+        'Authorization': `Basic ${authUser.encodedCredentials}`
+      }
+    })
+    console.log("Response :", response.status);
     if(response.status === 200){
-      toast.warn("Home has been listed.", {
+      console.log("Toastify should work.");
+      toast.warn("Home has been deleted.", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
         theme: "colored"
       });
     }
+    setReload(reload => !reload)
   }
 
   return (
@@ -39,7 +52,7 @@ export default function UserDashBoard() {
 
         {home && home.map((data, index)=>(
 
-          <div className="col-md-4" key={index+1}>
+          <div className="col-md-4" key={data.home_id}>
               <div className="card-box-a card-shadow">
               <div className="img-box-a">
                 <img src="assets/img/property-1.jpg" alt="" className="img-a img-fluid"/>
@@ -55,7 +68,7 @@ export default function UserDashBoard() {
                     <div className="price-box d-flex">
                       <span className="price-a">rent | RS. {data.price}</span>
                     </div>
-                    <Link to={`/dashboard/home/${index}`}  className="link-a">Click here to Edit Info
+                    <Link to={`/dashboard/home/${data.home_id}`}  className="link-a">Click here to Edit Info
                       <span className="bi bi-chevron-right"></span>
                     </Link>
                   </div>
@@ -65,7 +78,7 @@ export default function UserDashBoard() {
                    {/* Delete Button Setup */}
                     <ul className="card-info d-flex justify-content-around">
                     <li>
-                    <button type="button" class="btn btn-danger" onClick={e => handleDelete(data.home_id)}><h4>Delete</h4></button>
+                    <button type="button" class="btn btn-danger" onClick={() => handleDelete(data.home_id)}><h4>Delete</h4></button>
                     </li>
                     </ul>
                   </div>

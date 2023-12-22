@@ -59,35 +59,34 @@ const totalPages = Math.ceil(updatedHome.length / itemsPerPage);
 
  //filter based on rental status
  useEffect(() => {
-  const filteredHome = property.filter(home => home.rented === rentStatus);
-  console.log("Rental status :",filteredHome);
-  // setUpdatedHome(filteredHome);
+ const filteredHome = property && property.filter( home => {
+  if(rentStatus === '1'){
+    return home.rented === true;
+  } else if(rentStatus === '0'){
+    return home.rented === false;
+  } else {
+    return true;
+  }
+ })
+ setUpdatedHome(filteredHome);
  },[rentStatus])
 
  //filter based on price range
 useEffect(() => {
-  const filteredHome = selectedPriceRange
-        ? property.filter(property => {
-            const [min, max] = getPriceRange(selectedPriceRange);
-            return property.price >= min && property.price <= max;
-          })
-        : property;
-  console.log("Price Range :", filteredHome)
-
+ const filteredHome = property && property.filter(home => {
+  if (selectedPriceRange === '1') {
+    return home.price >= 1000 && home.price <= 5000;
+  } else if (selectedPriceRange === '2') {
+    return home.price > 5000 && home.price <= 10000;
+  } else if (selectedPriceRange === '3') {
+    return home.price > 10000;
+  } else {
+    return true; 
+  }
+ })
+setUpdatedHome(filteredHome);
 },[selectedPriceRange])
  
-const getPriceRange = value => {
-  switch (value) {
-    case '1':
-      return [1000, 5000];
-    case '2':
-      return [5000, 10000];
-    case '3':
-      return [10000, Infinity];
-    default:
-      return [0, Infinity];
-  }
-};
 
   return (
     <>
@@ -104,8 +103,8 @@ const getPriceRange = value => {
 
        <select class="form-select" aria-label="Default select example" value={rentStatus} onChange={e => setRentStatus(e.target.value)}>
       <option selected >Status</option>
-      <option value="true">Rented</option>
-      <option value="false">Not Rented</option>
+      <option value="1">Rented</option>
+      <option value="0">Not Rented</option>
        </select>
        
        <select class="form-select" aria-label="Default select example" value={selectedDistrict} onChange={e => setSelectedDistrict(e.target.value)}>

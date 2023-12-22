@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Pagination from '../Admin/Pagination';
 import Properties from './Properties';
 import axios from 'axios';
+import Spinner from './Spinner';
 
 export default function NearMe() {
     // const [location, setLocation] = useState(null);
     const [nearHome, setNearHome] = useState([]);
     const [updatedHome, setUpdatedHome] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(true)
     const itemsPerPage = 9;
   
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -21,6 +23,7 @@ export default function NearMe() {
       .then(res => {
         setNearHome(res.data)
         setUpdatedHome(res.data)
+        setLoading(false);
       })
       .catch(error => console.log("Error occured whille fetching near home :",error.message));
     }
@@ -48,11 +51,13 @@ export default function NearMe() {
 
   return (
     <div className='mt-5'>
+      {loading && <Spinner />}
       <Properties property={currentItems}/>
+      {!loading &&
       <Pagination 
        currentPage={currentPage} 
        totalPages={totalPages} 
-       onPageChange={handlePageChange} />
+       onPageChange={handlePageChange} /> }
     </div>
   )
 }
