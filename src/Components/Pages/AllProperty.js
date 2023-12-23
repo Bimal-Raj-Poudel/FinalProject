@@ -55,6 +55,7 @@ const totalPages = Math.ceil(updatedHome.length / itemsPerPage);
  useEffect(() => {
   const filteredHome = property.filter(home => (home.district)===(selectedDistrict));
   setUpdatedHome(filteredHome);
+  
  },[selectedDistrict])
 
  //filter based on rental status

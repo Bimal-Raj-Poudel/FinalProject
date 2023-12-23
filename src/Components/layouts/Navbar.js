@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../App';
 import { toast } from 'react-toastify';
 
@@ -12,7 +12,7 @@ const Navbar = ({setAuthUser}) => {
   const authUser =useContext(AuthContext);
 
 const handleLogOut = () =>{
-  navigate(' /');
+  navigate("/");
   setAuthUser('');
   toast.warn("Logged out successfully",{
     position: "top-center",
@@ -35,56 +35,56 @@ const handleLogOut = () =>{
         <ul className="navbar-nav text-decoration-none ">
 
           <li className="nav-item">
-           <Link to="/" > 
-           <p className="nav-link active text-decoration-none text-success text-decoration-underline" >Home</p>
-           </Link>
+           <NavLink to="/" style={{textDecoration:"none"}} activeClassName="active"> 
+           <p className="nav-link text-decoration-none text-success " >Home</p>
+           </NavLink>
           </li>
 
           <li className="nav-item">
-            <Link to="/property">
-            <p className={`nav-link text-decoration-underline text-success`} >Property</p></Link>
+            <NavLink to="/property" style={{textDecoration:"none"}} activeClassName="active">
+            <p className={`nav-link  text-success`} >Property</p></NavLink>
           </li>
 
           <li className="nav-item">
-            <Link to="/aboutUs">
-            <p className={`nav-link text-decoration-underline text-success `} >AboutUs</p></Link>
+            <NavLink to="/aboutUs" style={{textDecoration:"none"}} activeClassName="active">
+            <p className={`nav-link  text-success `} >AboutUs</p></NavLink>
           </li>
 
 
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Category</a>
+            <li className="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Category</li>
             <div className="dropdown-menu " aria-labelledby="navbarDropdown">
-              <Link to="/singleRoom"><p className="dropdown-item text-success" > SingleRooms </p></Link>
-              <Link to="/shutterRoom"><p className="dropdown-item text-success"> Shutter Rooms </p></Link>
-              <Link to="/house"><p className="dropdown-item text-success" > House </p></Link>
-              <Link to="/flat"><p className="dropdown-item text-success" > Flat </p></Link>
-              <Link to="/officeSpace"><p className="dropdown-item text-success" > Office Space </p></Link>
+              <Link to="/singleRoom" style={{textDecoration:"none"}} ><p className="dropdown-item text-success" > SingleRooms </p></Link>
+              <Link to="/shutterRoom" style={{textDecoration:"none"}} ><p className="dropdown-item text-success"> Shutter Rooms </p></Link>
+              <Link to="/house" style={{textDecoration:"none"}} ><p className="dropdown-item text-success" > House </p></Link>
+              <Link to="/flat" style={{textDecoration:"none"}} ><p className="dropdown-item text-success" > Flat </p></Link>
+              <Link to="/officeSpace" style={{textDecoration:"none"}} ><p className="dropdown-item text-success" > Office Space </p></Link>
             </div>
           </li>
 
           <li className="nav-item">
-            <Link to= "/nearMe" > 
-            <p className={`nav-link text-decoration-underline text-success `} 
-            >NearMe</p></Link>
+            <NavLink to= "/nearMe" style={{textDecoration:"none"}} activeClassName="active"> 
+            <p className={`nav-link  text-success `} 
+            >NearMe</p></NavLink>
+          </li>
+
+          <li className={`nav-item`} >
+            <NavLink to= "/request" style={{textDecoration:"none"}} activeClassName="active"> 
+            <p className={`nav-link  text-success`} 
+            >Request</p></NavLink>
           </li>
 
           <li className="nav-item">
-            <Link to= "/request" > 
-            <p className={`nav-link text-decoration-underline text-success `} 
-            >Request</p></Link>
+            <NavLink to= "/contactUs" style={{textDecoration:"none"}} activeClassName="active"> 
+            <p className={`nav-link  text-success `} 
+           >Contact Us</p></NavLink>
           </li>
 
           <li className="nav-item">
-            <Link to= "/contactUs" > 
-            <p className={`nav-link text-decoration-underline text-success `} 
-           >Contact Us</p></Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to= "/SignIn" > 
-            <p className={`nav-link text-decoration-underline text-success `} 
-            >{authUser.isAuthenticated?`Hello, ${authUser.name}`:'LogIn'}</p></Link>
+            <NavLink to= "/SignIn" style={{textDecoration:"none"}} activeClassName="active"> 
+            <p className={`nav-link  text-success `} 
+            >{authUser.isAuthenticated?`Hello, ${authUser.name}`:'LogIn'}</p></NavLink>
           </li>
 
           <li className="nav-item">
@@ -96,8 +96,8 @@ const handleLogOut = () =>{
        <i class="bi bi-speedometer"> DashBoard</i>
       </a>
       <ul class="dropdown-menu rounded">
-    <li><Link class="dropdown-item" to="/dashBoard">My Listing</Link></li>
-    <li><Link class="dropdown-item" to="#" onClick={handleLogOut}>LogOut</Link></li>
+    <li><Link class="dropdown-item" to="/dashBoard" activeClassName="active">My Listing</Link></li>
+    <li><Link class="dropdown-item" to="#" onClick={handleLogOut} activeClassName="active">LogOut</Link></li>
   </ul>
 </div>
             

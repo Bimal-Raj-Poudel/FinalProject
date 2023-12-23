@@ -3,6 +3,7 @@ import './AdminUser.css'
 import UserItem from './UserItem'
 import axios from 'axios';
 import { AuthContext } from '../../App';
+import { toast } from 'react-toastify';
 
 export default function AdminUser() {
 const authUser =useContext(AuthContext);
@@ -36,22 +37,41 @@ setFilterUsers(filteredUsers);
 //Handle Delete user
 const handleDelete = async (id) =>{
      try{
-      const response = await axios.delete(`http://localhost:3032/users/${id}`);
-      setReload(!reload);
-     }catch(err){
+      const response = await axios.delete(`http://localhost:8080/api/person/${id}`,{
+        headers: {
+          'Authorization': `Basic ${authUser.encodedCredentials}`
+        }
+      });
+      if(response.status === 200){
+        toast.warn("User deleted.", {
+          position: "top-center",
+          autoClose: 3000,
+          theme: "colored"
+        })
+        setReload(!reload);
+      }
+     } catch(err){
         console.log("Error deleting user :", err)
      }
 }
 
   return (
-    <div>
-      <div><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e)=> setSearch(e.target.value)}/></div>
+    <>
+    
+      <div className='input-group d-flex justify-content-center align-items-center gap-0  rounded-3 sticky-top'>
+      <div className='p-2'>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e)=> setSearch(e.target.value)} style={{width:"30em"}} />
+        </div>
+        </div>
+
         <ul>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
             {filterUsers && filterUsers.map(user => (
-                <li key={user.person_id} onClick={() => console.log(user.person_id)}><UserItem user={user} handleDelete={handleDelete}/></li>
+                <li key={user.person_id} ><UserItem user={user} handleDelete={handleDelete}/></li>
             ))}
+        </div>
         </ul>
      
-    </div>
+    </>
   )
 }

@@ -7,8 +7,8 @@ export default function PopUpForm({addCategory, formVisibility}) {
     const handelAddCategory = (e) =>{
         e.preventDefault();
         const data = {
-            "title":title,
-            "description":description
+            categoryName:title,
+            categoryDescription:description
         }
         addCategory(data)
         addTitle('')
@@ -26,12 +26,12 @@ export default function PopUpForm({addCategory, formVisibility}) {
       <form onSubmit={handelAddCategory}>
   <div class="form-group m-2">
     <label for="Title">Enter Title</label>
-    <input type="text" class="form-control" id="Title" value={title} aria-describedby="emailHelp" placeholder="Title" onChange={e=> addTitle(e.target.value)} required/>
+    <input type="text" class="form-control border border-3 border-success rounded-3" id="Title" value={title} aria-describedby="emailHelp" placeholder="Title" onChange={e=> addTitle(e.target.value)} required/>
   </div>
   
   <div class="form-group m-2">
     <label for="Description">Enter Description</label>
-    <input type="text" class="form-control" id="Description"  value={description} aria-describedby="emailHelp" placeholder="Description" onChange={e=> addDesription(e.target.value)} required/>
+    <input type="text" class="form-control border border-3 border-success rounded-3" id="Description"  value={description} aria-describedby="emailHelp" placeholder="Description" onChange={e=> addDesription(e.target.value)} required/>
   </div>
 
   <button type="submit" className="btn btn-primary m-2">Submit</button>

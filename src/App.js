@@ -49,6 +49,7 @@ const [specificHome, setSpecificHome] = useState({});
           <Route path="/admin/user" element={<AdminUser/>}></Route> 
           <Route path="/admin/category" element={<AdminCategory/>}></Route> 
           </Routes>
+          <ToastContainer />
           </AuthContext.Provider>
           </div>
       </div>
