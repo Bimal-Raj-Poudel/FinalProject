@@ -32,6 +32,8 @@ export const AuthContext = createContext();
 
 function App() {
 const [authUser, setAuthUser] = useState({});
+const [specificHome, setSpecificHome] = useState({});
+
 
   if(authUser.email === "admin@gmail.com"){
     return( 
@@ -40,12 +42,15 @@ const [authUser, setAuthUser] = useState({});
         <div className='sidebar'>  <SideBar /> </div>
 
         <div className='content'> 
+        <AuthContext.Provider value={authUser}>
           <Routes> 
           <Route path="/" element={<DashBoard/>}></Route> 
           <Route path="/admin/home" element={<AdminHome/>}></Route> 
           <Route path="/admin/user" element={<AdminUser/>}></Route> 
           <Route path="/admin/category" element={<AdminCategory/>}></Route> 
           </Routes>
+          <ToastContainer />
+          </AuthContext.Provider>
           </div>
       </div>
       )
@@ -71,8 +76,8 @@ const [authUser, setAuthUser] = useState({});
         <Route path="/register" element={<Register />}> </Route>
         <Route path="/signIn" element={<SignIn setAuthUser={setAuthUser}/>}></Route>  
         <Route path="/request" element={<Request/>}></Route>   
-        <Route path='/dashboard' element={<UserDashBoard />}></Route>
-        <Route path='/dashboard/home/:id' element={<EditHome />}></Route>
+        <Route path='/dashboard' element={<UserDashBoard/>}></Route>
+        <Route path='/dashboard/home/:id' element={<EditHome/>}></Route>
         <Route path='*' element={<Error />} > </Route>
       </Routes>
       <Footer />

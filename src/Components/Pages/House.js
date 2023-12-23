@@ -14,7 +14,7 @@ const House = () => {
 
   return (
     <> 
-    <div className=''>
+    <div className='mt-3'>
      <Properties property={home}/>
      </div>
     </>

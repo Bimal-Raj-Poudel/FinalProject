@@ -3,75 +3,7 @@ import Rating from './Rating';
 import { Link } from 'react-router-dom';
 
 const Properties = ({property}) => {
-  // const propertyDetails = [
-  //   {
-  //     propertyTItle: "204 Mount Olive Road Two",
-  //     rentPrice: 12000,
-  //     link: "",
-  //     roomDetails: {
-  //       area: 340,
-  //       beds: 2,
-  //       baths: 3,
-  //       garages: 1
-  //     }
-  //   },
-  //   {
-  //     propertyTItle: "204 Mount Olive Road Two",
-  //     rentPrice: 12000,
-  //     link: "",
-  //     roomDetails: {
-  //       area: 340,
-  //       beds: 2,
-  //       baths: 3,
-  //       garages: 1
-  //     }
-  //   },
-  //   {
-  //     propertyTItle: "204 Mount Olive Road Two",
-  //     rentPrice: 12000,
-  //     link: "",
-  //     roomDetails: {
-  //       area: 340,
-  //       beds: 2,
-  //       baths: 3,
-  //       garages: 1
-  //     }
-  //   },
-  //   {
-  //     propertyTItle: "204 Mount Olive Road Two",
-  //     rentPrice: 12000,
-  //     link: "",
-  //     roomDetails: {
-  //       area: 340,
-  //       beds: 2,
-  //       baths: 3,
-  //       garages: 1
-  //     }
-  //   },
-  //   {
-  //     propertyTItle: "204 Mount Olive Road Two",
-  //     rentPrice: 12000,
-  //     link: "",
-  //     roomDetails: {
-  //       area: 340,
-  //       beds: 2,
-  //       baths: 3,
-  //       garages: 1
-  //     }
-  //   },
-  //   {
-  //     propertyTItle: "204 Mount Olive Road Two",
-  //     rentPrice: 12000,
-  //     link: "",
-  //     roomDetails: {
-  //       area: 340,
-  //       beds: 2,
-  //       baths: 3,
-  //       garages: 1
-  //     }
-  //   },
-    
-  // ]
+  
   
 
   return (

@@ -8,7 +8,7 @@ const PropertySingle = () => {
 
   const [singleHome, setSingleHome] = useState({});
   const [rate, setRate] = useState(1);
-
+  const [comment, setComment] = useState({});
   const {id} = useParams();
 
   const fetchData = () => {
@@ -22,20 +22,9 @@ const PropertySingle = () => {
     fetchData();
   },[])
 
-  console.log("Id :", id);
-  
-  const propertyDetails = [
-    {
-        propertyTItle: "204 Mount Olive Road Two",
-        rentPrice: 12000,
-        link: "",
-        roomDetails: {
-            area: 340,
-            beds: 2,
-            baths: 3,
-            garages: 1
-        }
-    }]
+  const handleRate = () =>{
+
+  }
 
     
    return (
@@ -64,7 +53,7 @@ const PropertySingle = () => {
                   <h6 className='font-monospace fs-5'>Rate your experience. </h6>
                   <div className='d-flex gap-2'> 
                   <i class="bi bi-patch-minus-fill text-warning fs-5" onClick={e => setRate(rate===1?(1):(rate-1))} style={{cursor:'pointer'}} /><span className='fs-5 fw-bolder'>{rate}</span><i class="bi bi-patch-plus-fill  text-warning  fs-5" onClick={e => setRate(rate===5?(5):(rate+1))} style={{cursor:'pointer'}} />
-                  <i class="bi bi-send-fill text-warning  fs-5" style={{cursor:'pointer'}} >Send</i>
+                  <i class="bi bi-send-fill text-warning  fs-5" style={{cursor:'pointer'}} onClick={handleRate}>Send</i>
                   </div>
                 </div>
 
