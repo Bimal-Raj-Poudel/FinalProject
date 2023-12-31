@@ -1,28 +1,111 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Rating from './Rating';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from '../../App';
+import { toast } from 'react-toastify';
 
 const PropertySingle = () => {
 
+  const [reload, setReload] = useState(false);
   const [singleHome, setSingleHome] = useState({});
   const [rate, setRate] = useState(1);
-  const [comment, setComment] = useState({});
+  const [comment, setComment] = useState([]);
+  const [addComment, setAddComment] = useState('');
+  const [individualRating, setIndividualRating] = useState(-1);
+  const authUser =useContext(AuthContext);
   const {id} = useParams();
 
-  const fetchData = () => {
+  const navigate = useNavigate();
 
-     axios.get(`http://localhost:8080/api/home/${id}`)
-     .then(res => setSingleHome(res.data))
-     .catch(error => console.log("Error in single Property :", error.message));
+  const fetchData = async () => {
+    try{
+    const response = await axios.get(`http://localhost:8080/api/home/${id}`);
+
+    if(response.status === 200){
+      setSingleHome(response.data);
+      console.log(response.data.images.length)
+
+      //Load individual rating
+      axios.get(`http://localhost:8080/api/rating/user/${authUser.person_id}/home/${id}`,{
+        headers: {
+          'Authorization': `Basic ${authUser.encodedCredentials}`
+        }
+      }).then(response =>{ 
+        console.log("Individual rating :",response.data.user)
+        setIndividualRating(response.data.userRating);
+      })
+      .catch(error => console.log("Error while loading individual rating :", error.message));
+
+      //Load comment
+      axios.get(`http://localhost:8080/api/comment/home/${id}`)
+      .then(res => {
+        setComment(res.data)
+      })
+      .catch(err => console.log("Error while loading comment :", err.message))
+    }
+  } catch(error) {
+    console.log("Error while loading single home :", error.message);
+  }
   }
 
   useEffect(() => {
     fetchData();
-  },[])
+  },[reload])
 
-  const handleRate = () =>{
+  //Handle Rating
+  const handleRate = async () =>{
+    
+    if(!authUser.isAuthenticated){
+    toast.warn("You must log in before rating.", {
+      position: 'bottom-center',
+      autoClose: 3000,
+      theme: 'colored'
+    })
+    navigate('/signIn');
+  }
+else{
+    const data = {
+      ratingValue:rate
+    }
+
+    const response = await axios.post(`http://localhost:8080/api/rating/user/${authUser.person_id}/home/${id}`, data,{
+      headers: {
+        'Authorization': `Basic ${authUser.encodedCredentials}`
+      }
+    })
+    if(response.status === 201){
+      toast.success("Your Rating submitted.", {
+        position: 'bottom-center',
+        autoClose: 3000,
+        theme: 'colored'
+      })
+      setReload(!reload);
+    }}
+  }
+
+  //Add comment
+  const handleSendComment = async (e) => {
+    e.preventDefault();
+    const data = {
+      content: addComment
+    }
+    const response = await axios.post(`http://localhost:8080/api/comment/user/${authUser.person_id}/home/${id}`, data,{
+      headers: {
+        'Authorization': `Basic ${authUser.encodedCredentials}`
+      }
+    })
+
+    if(response.status === 201){
+      toast.success("Your comment added.", {
+        position: 'bottom-center',
+        autoClose: 3000,
+        theme: 'colored'
+      })
+      setAddComment("");
+      setReload(!reload);
+    }
 
   }
 
@@ -40,24 +123,37 @@ const PropertySingle = () => {
               <div class="col-md-5 col-lg-4">
 
                {/* Image and Badge setup */}
-                <div class="d-flex justify-content-center ">
-                  <div className="card-header-c d-flex">
-                  <span class={`badge text-bg-${singleHome.rented ?'danger' :'primary'} position-absolute m-3`}>{singleHome.rented ? "NotAvailable":"Available"}</span>
-                     <img src="/assets/img/slide-2.jpg" alt="Error Loading..." style={{ width: '100%', height: '400px' }}/>
+                <div class="d-flex justify-content-center">
+                  <div className="card-header-c d-flex shadow">
+                  <span class={`badge text-bg-${singleHome.rented ?'danger' :'primary'} position-absolute m-3`} >{singleHome.rented ? "NotAvailable":"Available"}</span>
+                     {/* <img src="/assets/img/property-1.jpg" alt="Error Loading..." style={{ width: '400px', height: '400px' }}/> */}
+                     <img src={singleHome.images != null ? `/assets/property/${singleHome.images[0].image_path}` : '/assets/img/property-1.jpg'} alt="Error Loading..." style={{ width: '400px', height: '400px' }}/>
                   </div>
                 </div>
 
                 <div className='left-0'><Rating stars = {singleHome.averageRating}/></div>
 
-                <div className='d-flex  justify-content-center  rounded gap-1'>
-                  <h6 className='font-monospace fs-5'>Rate your experience. </h6>
-                  <div className='d-flex gap-2'> 
-                  <i class="bi bi-patch-minus-fill text-warning fs-5" onClick={e => setRate(rate===1?(1):(rate-1))} style={{cursor:'pointer'}} /><span className='fs-5 fw-bolder'>{rate}</span><i class="bi bi-patch-plus-fill  text-warning  fs-5" onClick={e => setRate(rate===5?(5):(rate+1))} style={{cursor:'pointer'}} />
+                
+                <div className='d-flex  justify-content-center bg-secondary shadow  rounded gap-1'>
+                  {individualRating != -1 ?
+                    <div>
+                    <h6 className='font-monospace fs-5 text-white'>You rated this property as {individualRating}.</h6>
+                    </div> :
+                  <div>
+                <h6 className='font-monospace fs-5 text-white'>Rate this property!! </h6>
+                  <div className='d-flex gap-2 '> 
+                  <i class="bi bi-patch-minus-fill text-warning fs-5" onClick={e => setRate(rate===1?(1):(rate-1))} style={{cursor:'pointer'}} /><span className='fs-5 fw-bolder text-white'>{rate}</span><i class="bi bi-patch-plus-fill  text-warning  fs-5" onClick={e => setRate(rate===5?(5):(rate+1))} style={{cursor:'pointer'}} />
                   <i class="bi bi-send-fill text-warning  fs-5" style={{cursor:'pointer'}} onClick={handleRate}>Send</i>
                   </div>
+                  </div>
+                   }
                 </div>
+                 
+                
 
-                <div class="property-summary">
+                <h3 className='mt-3'>RS. {singleHome.price} <sup>per month</sup></h3> 
+
+                <div class="property-summary"> 
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="title-box-d section-t4">
@@ -65,10 +161,10 @@ const PropertySingle = () => {
                       </div>
                     </div>
                   </div>
-                  <div class="summary-list">
+                  <div class="summary-list bg-light rounded-3 shadow   p-3">
                     <ul class="list">
                       <li class="d-flex justify-content-between">
-                        <strong>Property ID:</strong>
+                        <strong> ID:</strong>
                         <span>{singleHome.home_id}</span>
                       </li>
                       <li class="d-flex justify-content-between">
@@ -81,7 +177,7 @@ const PropertySingle = () => {
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Status:</strong>
-                        <span>{singleHome.rented ? 'Yes':'No'}</span>
+                        <span>{singleHome.rented ? 'Rented':'Not Rented'}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Area:</strong>
@@ -90,7 +186,7 @@ const PropertySingle = () => {
                         </span>
                       </li>
                       <li class="d-flex justify-content-between">
-                        <strong>Beds:</strong>
+                        <strong>BedRoom:</strong>
                         <span>4</span>
                       </li>
                       <li class="d-flex justify-content-between">
@@ -105,7 +201,22 @@ const PropertySingle = () => {
                   </div>
                 </div>
               </div>
+              
               <div class="col-md-7 col-lg-7 section-md-t3">
+
+              <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Property Title</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-description ">
+                  <p class="description color-text-a fw-bolder font-monospace">
+                    {singleHome.title}
+                  </p>
+                </div>
+
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="title-box-d">
@@ -114,19 +225,11 @@ const PropertySingle = () => {
                   </div>
                 </div>
                 <div class="property-description ">
-                  <p class="description color-text-a fw-semibold">
-                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
-                    neque, auctor sit amet
-                    aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.
-                    Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt
-                    nibh pulvinar quam id dui posuere blandit.
+                  <p class="description color-text-a fw-semibold font-monospace">
+                    {singleHome.description}
                   </p>
-                  {/* <p class="description color-text-a no-margin">
-                    Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
-                    malesuada. Quisque velit nisi,
-                    pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
-                  </p> */}
                 </div>
+
                 <div class="row section-t3">
                   <div class="col-sm-12">
                     <div class="title-box-d">
@@ -150,26 +253,42 @@ const PropertySingle = () => {
               </div>
             </div>
           </div>
+
           {/* MAP Location of Property */}
           <div className='mt-2'>
-            <h4>See Location</h4>
-            <iframe src={`https://maps.google.com/maps?q=${singleHome.latitude},${singleHome.longitude}&hl=es;&output=embed`} id="iframeId" height="500px" width="100%"></iframe>
+            <div class="row">
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d">See Location</h3>
+                      </div>
+                    </div>
+                  </div>
+            <iframe src={`https://maps.google.com/maps?q=${singleHome.latitude},${singleHome.longitude}&hl=en;&output=embed`} id="iframeId" height="500px" width="100%"></iframe>
         </div>
 
         {/* Comment section */}
+        <div class="row">
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d">Add Comment</h3>
+                      </div>
+                    </div>
+                  </div>
 
-        <div className='mt-4 bg-success-subtle rounded-3'>
-        <div className='m-2 fw-bolder'>Add Comments</div>
-        
+        <div className='mt-1 bg-success-subtle rounded-3'>                 
         <div className="form-floating">
-        <textarea className="form-control border border-success rounded-4" placeholder="Leave a comment here" id="floatingTextarea2" style={{height: "100px"}} />
+        <textarea className="form-control border border-success rounded-4 mt-3" placeholder="Leave a comment here" id="floatingTextarea2" value={addComment} onChange={e => setAddComment(e.target.value)} style={{height: "100px"}} />
         <label for="floatingTextarea2">Add Comment.</label>
-        <button className='fw-2 p-1 m-2 btn btn-success rounded'><i class="fas fa-paper-plane"></i> send</button>
+        <button className={`fw-2 p-1 m-2 btn btn-success rounded ${authUser.isAuthenticated ?"":"disabled"}`} onClick={handleSendComment} ><i class="fas fa-paper-plane"></i> send</button>
         
         </div>
           <ul>
           <li className='font-monospace'><i class="fas fa-user-tie p-2"></i>Kati ramro xa tah ghar</li>
           <li className='font-monospace'><i class="fas fa-user-tie p-2"></i>Dherai nai man paro</li>
+          {comment && comment.map(value => (
+            <li className='font-monospace'><i class="fas fa-user-tie p-2"></i>{value.content}</li>
+          )
+          )}
           </ul>
         </div>
     

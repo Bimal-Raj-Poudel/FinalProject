@@ -60,7 +60,7 @@ export default function Request() {
             longitude: longitude
           });
           toast.info("Location added.", {
-            position: "top-center",
+            position: "bottom-center",
             autoClose: 200,
             theme: "colored"
           })
@@ -74,6 +74,7 @@ export default function Request() {
     }
   };
 
+  //Hande Submit
   const handleSubmit = async(e) => {
     console.log("Submit button clicked")
     e.preventDefault();
@@ -100,8 +101,8 @@ export default function Request() {
          if(res.status === 201){
          console.log("Home has been listed :", response.data);
         
-         toast.success("Home has been listed.", {
-          position: "top-center",
+         toast.success("Property has been listed.", {
+          position: "bottom-center",
           autoClose: 3000,
           theme: "colored"
         });

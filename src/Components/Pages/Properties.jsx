@@ -20,7 +20,7 @@ const Properties = ({property}) => {
               <div className="card-box-a card-shadow">
               <div className="img-box-a">
                 <span className='position-absolute m-2'><Rating stars={data.averageRating}/></span>
-                <img src="assets/img/property-1.jpg" alt="" className="img-a img-fluid"/>
+                <img src={`${data.images[0].image_path ? `assets/property/${data.images[0].image_path}`:'assets/img/property-1.jpg'}`} alt="" className="img-a img-fluid"/>
               </div>
               <div className="card-overlay">
                 <div className="card-overlay-a-content">

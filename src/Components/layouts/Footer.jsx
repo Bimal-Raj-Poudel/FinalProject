@@ -9,10 +9,10 @@ const Footer = () => {
         <div className="col-sm-12 col-md-4">
           <div className="widget-a">
             <div className="w-header-a">
-              <h3 className="w-title-a text-brand">GharBhada </h3>
+              <h3 className="w-title-a text-brand text-success ">GharBhada </h3>
             </div>
             <div className="w-body-a">
-              <p className="w-text-a color-text-a">
+              <p className="w-text-a color-text-a text-success">
                 Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
                 sed aute irure.
               </p>
@@ -32,58 +32,58 @@ const Footer = () => {
         <div className="col-sm-12 col-md-4 section-md-t3">
           <div className="widget-a">
             <div className="w-header-a">
-              <h3 className="w-title-a text-brand">The Company</h3>
+              <h3 className="w-title-a text-brand text-success">The Company</h3>
             </div>
             <div className="w-body-a">
               <div className="w-body-a">
                 <ul className="list-unstyled">
                   <li className="item-list-a">
-                    <i className="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                    <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Site Map</a>
                   </li>
                   <li className="item-list-a">
-                    <i className="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                    <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Legal</a>
                   </li>
                   <li className="item-list-a">
-                    <i className="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                    <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Agent Admin</a>
                   </li>
                   <li className="item-list-a">
-                    <i className="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                    <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Careers</a>
                   </li>
                   <li className="item-list-a">
-                    <i className="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                    <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Affiliate</a>
                   </li>
                   <li className="item-list-a">
-                    <i className="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                    <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Privacy Policy</a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-sm-12 col-md-4 section-md-t3">
+        <div className="col-sm-12 col-md-4 section-md-t3 text-success">
           <div className="widget-a">
             <div className="w-header-a">
-              <h3 className="w-title-a text-brand">International sites</h3>
+              <h3 className="w-title-a text-brand text-success">International sites</h3>
             </div>
             <div className="w-body-a">
-              <ul className="list-unstyled">
+              <ul className="list-unstyled ">
                 <li className="item-list-a">
-                  <i className="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
+                  <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Venezuela</a>
                 </li>
                 <li className="item-list-a">
-                  <i className="bi bi-chevron-right"></i> <a href="#">China</a>
+                  <i className="bi bi-chevron-right "></i> <a href="#" className='text-success text-decoration-none'>China</a>
                 </li>
                 <li className="item-list-a">
-                  <i className="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
+                  <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Hong Kong</a>
                 </li>
                 <li className="item-list-a">
-                  <i className="bi bi-chevron-right"></i> <a href="#">Argentina</a>
+                  <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Argentina</a>
                 </li>
                 <li className="item-list-a">
-                  <i className="bi bi-chevron-right"></i> <a href="#">Singapore</a>
+                  <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Singapore</a>
                 </li>
                 <li className="item-list-a">
-                  <i className="bi bi-chevron-right"></i> <a href="#">Philippines</a>
+                  <i className="bi bi-chevron-right"></i> <a href="#" className='text-success text-decoration-none'>Philippines</a>
                 </li>
               </ul>
             </div>
@@ -140,7 +140,7 @@ const Footer = () => {
           <div className="copyright-footer">
             <p className="copyright color-text-a">
               &copy; Copyright
-              <span className="color-a">GharBhada</span> All Rights Reserved.
+              <span className="color-a"> GharBhada</span> All Rights Reserved.
             </p>
           </div>
           <div className="credits">
