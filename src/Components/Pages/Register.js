@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Register() {
 
@@ -31,6 +32,11 @@ export default function Register() {
            const response = await axios.post('http://localhost:8080/api/person/create', formData);
 
            if (response.status === 201) {
+            toast.success("Registered successfully.",{
+              position: "bottom-center",
+              autoClose: 3000,
+              theme: "colored"
+            })
             console.log('User registered successfully');
             navigate("/signIn");
           } 
@@ -60,8 +66,8 @@ export default function Register() {
 
             <div class="d-flex flex-column justify-content-center  gap-2">
 
-              <h2 class="fw-bolder mb-2 text-uppercase">Register</h2>
-              <p class="text-dark-10 mb-2">Please enter details carefully !!</p>
+              <h2 className="fw-bolder mb-2 text-uppercase">Register</h2>
+              <p className="text-dark mb-2">Please enter details carefully !!</p>
 
              <form onSubmit={handleSubmit}>
 
@@ -121,7 +127,7 @@ export default function Register() {
 
               </form>
 
-              <p class="mb-0">Do you already have an account? <Link to="/signIn" className='text-white-50 fw-bold'>Login</Link>
+              <p className="mb-0 text-dark">Do you already have an account? <Link to="/signIn" className='text-white-50 fw-bold'>Login</Link>
               </p>
             </div>
 

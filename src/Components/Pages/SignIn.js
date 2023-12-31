@@ -39,8 +39,8 @@ export default function SignIn({setAuthUser}) {
             document.cookie = `AuthCredentials=${encodedCredentials}; HttpOnly; SameSite=Strict`;
              //Toastify
          toast.success("Logged in successfully.", {
-          position: "top-center",
-          autoClose: 3000,
+          position: "bottom-center",
+          autoClose: 2000,
           theme: "colored"
         });
         navigate('/');
@@ -74,7 +74,7 @@ export default function SignIn({setAuthUser}) {
 
   return (
     <>
-    <section class="vh-100 gradient-custom mt-0">
+    <section class="vh-100 gradient-custom ">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -111,7 +111,7 @@ export default function SignIn({setAuthUser}) {
 
               
 
-              <p class="mb-0">Don't have an account? <Link to="/register" className='text-white-50 fw-bold'>Register</Link>
+              <p className="mb-0 text-dark">Don't have an account? <Link to="/register" className='text-white-50 fw-bold'>Register</Link>
               </p>
               </form>
             </div>

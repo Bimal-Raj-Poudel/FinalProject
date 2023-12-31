@@ -20,7 +20,7 @@ export default function Rating({stars}) {
   return (
     <div className='d-flex justify-content-center align-items-center gap-1'>
       {ratingStar}  
-      <p className='text-warning align-self-end'>{stars}</p>
+      <p className='text-warning align-self-end m-1'>{stars}</p>
      
     </div>
   )
